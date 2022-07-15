@@ -1,5 +1,7 @@
-# LAP 3 Portfolio Week Project
+# Q1
 > An online quiz game developed using React.
+
+**Status:** [![Netlify Status](https://api.netlify.com/api/v1/badges/904a59cf-8476-4950-8dc4-4c269bfa91cc/deploy-status)](https://app.netlify.com/sites/q1-fp/deploys)
 
 ## Requirements
 #### Your website should have the following functionality for users:
