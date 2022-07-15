@@ -15,6 +15,10 @@
 - Make use of an open API such as [Open Trivia DB](https://opentdb.com/api_config.php)
 - Minimum 60% test coverage with an aim of 80%
 
+<hr>
+
+## Installation & Usage
+
 * Run `npm install` to install packages.
 
 ### Usage
