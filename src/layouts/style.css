@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+
+.container{
+    position: relative;
+    height: 150px;
+    background-image: url(../../public/Race\ track\ time\ line.webp);
+    background-position: center;
+    background-size: cover; 
+    border-radius: 5px;
+
+} 
+
+.progress-line1, .progress-line2, .progress-line3, .progress-line4 {
+     width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     content: url(../../public/TestCar.png);
+     
+}
+
+.correct-line1{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 100px;
+     content: url(../../public/TestCar.png);
+}
+
+
+label{
+    display: inline-block;
+    padding: 5px;
+    padding-left: 100px;
+    font-family: 'Racing Sans One';
+}
+
+.Cbtn{
+    display:flex;
+    justify-items: center;
+}
+
