@@ -15,8 +15,11 @@ const GameSettings = () => {
 		<h1>Selection</h1>
 		{ <GetQuestions /> }
 		<br />
-		<NavLink id="nav-back" to="#" onClick={handleClick}>Back</NavLink>
-	</>);
+    	{/* <GameConfig /> */}
+		<NavLink id="nav-next" to="/rules">Prepare Car</NavLink>
+		<NavLink id="nav-back" to "#" onClick={handleClick}>Back</NavLink>
+	</>
+  );
 };
 
 export default GameSettings;

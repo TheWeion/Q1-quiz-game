@@ -17,7 +17,8 @@ const Intro = () => {
 		<p>Answer as quickly as you can to cross the finish line!</p>
 		<NavLink id="nav-next" to="/settings">Next</NavLink><br />
 		<NavLink id="nav-back" to="#" onClick={handleClick}>Back</NavLink>
-	</>);
+	</>
+  );
 };
 
 export default Intro;

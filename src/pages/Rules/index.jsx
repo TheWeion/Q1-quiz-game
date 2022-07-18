@@ -25,7 +25,8 @@ const Rules = () => {
 		</ul>
 		<NavLink id="nav-next" to="/game">Engine Start</NavLink><br />
 		<NavLink id="nav-back" to="#" onClick={handleClick}>Back</NavLink>
-	</>);
+	</>
+  );
 };
 
 export default Rules;
