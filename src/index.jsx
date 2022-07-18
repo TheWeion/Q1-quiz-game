@@ -5,13 +5,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { legacy_createStore } from 'redux';
+import allReducers from './reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension';
+import { Provider } from 'react-redux';
+
+const store = legacy_createStore(allReducers, devToolsEnhancer());
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+<Provider store={store}>
   <React.StrictMode>
-  <Router>
-    <App />
-  </Router>
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
+</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
