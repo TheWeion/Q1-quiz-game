@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 
-
 const MainMenu = () => {
 	  return (
 		<>
@@ -14,4 +13,6 @@ const MainMenu = () => {
 			</div>
 		</>
   );
-}
+};
+
+export default MainMenu;
