@@ -44,3 +44,5 @@ export default Layout;
 
 //create a use effect so it re renders on every click with the api answers 
 //then try so that only one moves at a time 
+export { default as Header } from './Header';
+
