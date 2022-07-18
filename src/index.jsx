@@ -14,13 +14,13 @@ const store = legacy_createStore(allReducers, devToolsEnhancer());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
+<Provider store={store}>
   <React.StrictMode>
-  <Router>
-    <App />
-  </Router>
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
-  </Provider>
+</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

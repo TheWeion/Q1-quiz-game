@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { setQuestions } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import QuestionList from '../QuestionList';
 import Question from '../Question';
 
@@ -22,6 +24,7 @@ const GetQuestions = () => {
                 }
                 const axios = require('axios');
                 axios.get(url).then((cur)=>{
+                    console.log(cur);
                     if (cur.data.response_code === 0) {
                         resolve(cur.data.results);
                     } else {
@@ -33,6 +36,7 @@ const GetQuestions = () => {
             }
           });
         questions.then((cur)=>{
+            console.log(cur);
             dispatch(setQuestions(cur));
             navigate("../rules");
         });
@@ -44,14 +48,15 @@ const GetQuestions = () => {
         const lap = document.getElementById("lap").value;
         const difficulty = document.getElementById("difficulty").value;
         generateQuestions(lap, difficulty, topic);
+        console.log(topic, lap, difficulty);
     };
 
     const renderHTML = () => {
         return (
             <>
-                <form id="generateQuestions" onSubmit={handleSubmit}>
-                    <select id="topic">
-                        <option value="0" selected>Any Topic</option>
+                <Form id="generateQuestions" onSubmit={handleSubmit}>
+                    <Form.Select id="topic">
+                        <option value="0">Any Topic</option>
                         <option value="9">General Knowledge</option>
                         <option value="10">Entertainment: Books</option>
                         <option value="11">Entertainment: Film</option>
@@ -76,20 +81,20 @@ const GetQuestions = () => {
                         <option value="30">Science: Gadgets</option>
                         <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
                         <option value="32">Entertainment: Cartoon &amp; Animations</option>
-                    </select>
-                    <select id="lap">
+                    </Form.Select>
+                    <Form.Select id="lap">
                         <option value="5">5 Laps</option>
-                        <option value="10" selected>10 Laps</option>
+                        <option value="10">10 Laps</option>
                         <option value="15">15 Laps</option>
-                    </select>
-                    <select id="difficulty">
-                        <option value="easy" selected>Easy</option>
+                    </Form.Select>
+                    <Form.Select id="difficulty">
+                        <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
-                    </select>
+                    </Form.Select>
                     <br />
-                    <button type="submit">Prepare car</button>
-                </form>
+                    <Button id="nav-next" type="submit">Prepare car</Button>
+                </Form>
             </>
         )
     };
