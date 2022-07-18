@@ -1,6 +1,6 @@
 const playerList = [
     // id = plyayer ID
-    // lap/question ID, first question ID is 1
+    // lap/question ID, first question ID is 0
     // timer = seconds in total
     // drs = skip 1 lap/question
     // pit = get extra time without being counted in timer
@@ -8,7 +8,7 @@ const playerList = [
         "id": 1,
         "name": "Player 1",
         "nationality": "GBR",
-        "lap": 1, 
+        "lap": 0, 
         "timer": 0,
         "drs_used": false,
         "pit_entered": false,
@@ -18,7 +18,7 @@ const playerList = [
         "id": 2,
         "name": "Player 2",
         "nationality": "GBR",
-        "lap": 1,
+        "lap": 0,
         "timer": 0,
         "drs_used": false,
         "pit_entered": false,
@@ -28,7 +28,7 @@ const playerList = [
         "id": 3,
         "name": "Player 3",
         "nationality": "GBR",
-        "lap": 1,
+        "lap": 0,
         "timer": 0,
         "drs_used": false,
         "pit_entered": false,
@@ -38,7 +38,7 @@ const playerList = [
         "id": 4,
         "name": "Player 4",
         "nationality": "GBR",
-        "lap": 1,
+        "lap": 0,
         "timer": 0,
         "drs_used": false,
         "pit_entered": false,

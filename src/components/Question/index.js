@@ -18,15 +18,16 @@ const Question = ({playerId}) => {
 
     const prevQuestion = () => {
         let player = targetPlayer;
-        player.lap = player.lap - 1;
-        dispatch(updatePlayer(player));
-        renderHTML();
+        if (player.lap > 0) {
+            player.lap = player.lap - 1;
+            dispatch(updatePlayer(player));
+            renderHTML();
+        }
     };
 
     const renderHTML = () => {
-        console.log(targetPlayer)
         let html;
-        let curQuestion = questions[targetPlayer.lap - 1];
+        let curQuestion = questions[targetPlayer.lap];
         if (curQuestion !== undefined && curQuestion !== null) {
             if (curQuestion !== undefined && curQuestion !== null) {
                 html = `

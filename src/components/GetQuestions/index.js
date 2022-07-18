@@ -16,9 +16,9 @@ const GetQuestions = () => {
             try {
                 let url = ``;
                 if (topic === 0) {
-                    url = `https://opentdb.com/api.php?amount=${lap}&difficulty=${difficulty}`;
+                    url = `https://opentdb.com/api.php?amount=${lap}&difficulty=${difficulty}&type=multiple`;
                 } else {
-                    url = `https://opentdb.com/api.php?amount=${lap}&difficulty=${difficulty}&category=${topic}`;
+                    url = `https://opentdb.com/api.php?amount=${lap}&difficulty=${difficulty}&category=${topic}&type=multiple`;
                 }
                 const axios = require('axios');
                 axios.get(url).then((cur)=>{
