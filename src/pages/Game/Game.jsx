@@ -1,9 +1,12 @@
 import React from 'react';
-// import QuizRender from '../../components/'
+import Question from '../../components/Question';
 
 const Game = () => {
+
+
 	return (
 		<>
+			<Question playerId={1}/>
 			{/* <ScoreBoard />
 			<Timer />
 			<QuizRender />

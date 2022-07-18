@@ -9,14 +9,15 @@ const Intro = () => {
 		navigate(-1);
 	}
 
+	return (
 	<>
 		<NavLink id="nav-exit" to="/">X</NavLink>
 		<h1>Introduction</h1>
 		<img src={imgIntro} alt="intro" />
 		<p>Answer as quickly as you can to cross the finish line!</p>
-		<NavLink id="nav-next" to="/settings">Next</NavLink>
-		<NavLink id="nav-back" onClick={handleClick}>Back</NavLink>
-	</>	
+		<NavLink id="nav-next" to="/settings">Next</NavLink><br />
+		<NavLink id="nav-back" to="#" onClick={handleClick}>Back</NavLink>
+	</>);
 };
 
 export default Intro;
