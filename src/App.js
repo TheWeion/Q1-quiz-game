@@ -1,10 +1,14 @@
 import './App.css';
-import Layout from './layouts';
+import Timeline from './components/Timeline';
+import Timer from './components/Timer';
+import Radio from './components/Radio';
 
 function App() {
   return (
     <div className="App">
-      <Layout/>
+      <Timeline/>
+      <Timer/>
+      <Radio/>
     </div>
   );
 }

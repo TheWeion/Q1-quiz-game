@@ -3,7 +3,7 @@
 .container{
     position: relative;
     height: 150px;
-    background-image: url(../../public/Race\ track\ time\ line.webp);
+    background-image: url(../../../public/Race\ track\ time\ line.webp);
     background-position: center;
     background-size: cover; 
     border-radius: 5px;
@@ -14,7 +14,7 @@
      width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     content: url(../../public/TestCar.png);
+     content: url(../../../public/TestCar.png);
      
 }
 
@@ -23,9 +23,8 @@
      padding-bottom: 10px;
      padding-top: 5px;
      margin-left: 100px;
-     content: url(../../public/TestCar.png);
+     content: url(../../../public/TestCar.png);
 }
-
 
 label{
     display: inline-block;

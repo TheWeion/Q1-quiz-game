@@ -1,14 +1,27 @@
 import React, {useState} from 'react'
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import {Howl} from "howler"
 import './style.css'
 
-const Layout = () => {
+const Timeline = () => {
 
   const [position, setPosition] = useState("progress-line1"); 
+  const [score, setScore] = useState(false);
 
 const changePosition = (e) => {
     e.preventDefault("");
     setPosition("correct-line1");
+    callMySound(soundSrc);
+  }
+
+  const soundSrc = '../../../public/engine.mp3';
+
+  const callMySound = (src) => {
+    const sound= new Howl({
+      src, 
+      html5: true
+    })
+    sound.play()
   }
 
 
@@ -39,10 +52,11 @@ const changePosition = (e) => {
 }
 
 
-export default Layout;
+export default Timeline;
 
+/*onClick={() => callMySound(soundSrc)}*/
 
 //create a use effect so it re renders on every click with the api answers 
 //then try so that only one moves at a time 
-export { default as Header } from './Header';
+
 
