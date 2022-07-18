@@ -51,7 +51,7 @@ const GetQuestions = () => {
             <>
                 <form id="generateQuestions" onSubmit={handleSubmit}>
                     <select id="topic">
-                        <option value="0">Any Topic</option>
+                        <option value="0" selected>Any Topic</option>
                         <option value="9">General Knowledge</option>
                         <option value="10">Entertainment: Books</option>
                         <option value="11">Entertainment: Film</option>
@@ -79,11 +79,11 @@ const GetQuestions = () => {
                     </select>
                     <select id="lap">
                         <option value="5">5 Laps</option>
-                        <option value="10">10 Laps</option>
+                        <option value="10" selected>10 Laps</option>
                         <option value="15">15 Laps</option>
                     </select>
                     <select id="difficulty">
-                        <option value="easy">Easy</option>
+                        <option value="easy" selected>Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
                     </select>
