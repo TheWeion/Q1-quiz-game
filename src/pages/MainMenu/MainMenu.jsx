@@ -8,7 +8,7 @@ const MainMenu = () => {
 
 			<div className="main-menu" >
 				<div className="frm-menu-container">
-					<MenuForm ></MenuForm>
+					{/* <MenuForm /> */}
 				</div>
 			</div>
 		</>

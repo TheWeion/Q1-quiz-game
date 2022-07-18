@@ -12,7 +12,7 @@ const Leaderboard = () => {
 		<>
 			<NavLink id="nav-exit" to="/">X</NavLink>
 			<h1>Leaderboard</h1>
-			<LeaderboardRender />
+			{/* <LeaderboardRender /> */}
 			<NavLink id="nav-back" onClick={handleClick}>Back</NavLink>
 		</>
 	);

@@ -1,5 +1,5 @@
 import React from 'react';
-import imgIntro from './intro.png';
+import imgIntro from './intro.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const Intro = () => {
