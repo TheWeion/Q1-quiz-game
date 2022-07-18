@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const MainMenu = () => {
 	  return (
@@ -11,6 +12,7 @@ const MainMenu = () => {
 					{/* <MenuForm /> */}
 				</div>
 			</div>
+			<NavLink id="nav-next" to="/intro">Join</NavLink>
 		</>
   );
 };

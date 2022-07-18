@@ -8,6 +8,7 @@ const Rules = () => {
 		navigate(-1);
 	}
 
+	return (
 	<>
 		<NavLink id="nav-exit" to="/">X</NavLink>
 		<h1>Rules</h1>
@@ -22,9 +23,10 @@ const Rules = () => {
 			<li>3rd Place - Will earn you 15 additional points</li>
 			<li>4th Place - Will earn you 10 additional points</li>
 		</ul>
-		<NavLink id="nav-next" to="/game">Engine Start</NavLink>
-		<NavLink id="nav-back" onClick={handleClick}>Back</NavLink>
-	</>	
+		<NavLink id="nav-next" to="/game">Engine Start</NavLink><br />
+		<NavLink id="nav-back" to="#" onClick={handleClick}>Back</NavLink>
+	</>
+  );
 };
 
 export default Rules;
