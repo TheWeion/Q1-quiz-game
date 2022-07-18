@@ -17,7 +17,7 @@ const GameSettings = () => {
 		<br />
     	{/* <GameConfig /> */}
 		<NavLink id="nav-next" to="/rules">Prepare Car</NavLink>
-		{/* <NavLink id="nav-back" to "#" onClick={handleClick}>Back</NavLink> */}
+		<NavLink id="nav-back" to="#" onClick={handleClick}>Back</NavLink>
 	</>
   );
 };
