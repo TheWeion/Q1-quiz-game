@@ -4,7 +4,7 @@
 **Status:** [![Netlify Status](https://api.netlify.com/api/v1/badges/904a59cf-8476-4950-8dc4-4c269bfa91cc/deploy-status)](https://app.netlify.com/sites/q1-fp/deploys)
 
 ## Requirements
-#### Your website should have the following functionality for users:
+### Your website should have the following functionality for users:
 - Users should be able start a game with a limited number of players _(this can be from one computer or you may wish to consider use of websockets eg. [SocketIO](https://github.com/getfutureproof/fp_guides_wiki/wiki/Intro-to-Socket.IO)_
 - Users should be able to choose the level and topic for their quiz game.
 - Users should take it in turns to answer trivia questions and after a set number of turns a winner should be declared.
@@ -33,6 +33,7 @@
 * The live website can be accessed: [HERE]()
 
 ## Changelog
+
 
 ### v0.0.1 - Alpha "Off to the Pit with ye" Release (15/07/2022)
 
