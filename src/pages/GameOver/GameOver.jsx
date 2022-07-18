@@ -4,7 +4,7 @@ const GameOver = () => {
 	return (
 		<>
 			<h1>Podium</h1>
-			<PodiumRender />
+			{/* <PodiumRender /> */}
 		</>
 	);
 }

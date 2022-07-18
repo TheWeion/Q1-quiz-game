@@ -1,14 +1,14 @@
 import React from 'react';
-import QuizRender from '../../components/'
+// import QuizRender from '../../components/'
 
 const Game = () => {
 	return (
 		<>
-			<ScoreBoard />
+			{/* <ScoreBoard />
 			<Timer />
 			<QuizRender />
 			<Radio />
-			<RaceTrack />
+			<RaceTrack /> */}
 		</>
 	);
 }
