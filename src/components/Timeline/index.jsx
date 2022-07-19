@@ -14,8 +14,7 @@ const Timeline = () => {
   //const [score, setScore] = useState(false);
   //useEffect
 
-
-const changePosition = (e) => {
+  const changePosition = (e) => {
     e.preventDefault("");
     setPosition("correct-line1");
     callMySound(soundSrc);
@@ -28,6 +27,7 @@ useEffect(() => {
   setPosition("correct-line1");
   console.log(players)
 },[players[0].lap])
+
 
 
   const soundSrc = '../../../public/engine.mp3';
@@ -43,7 +43,7 @@ useEffect(() => {
 
   return (
     <>  <header>
-          <div className='container'>
+          <div className='container1'>
             <div className={position}></div>
             <div className={position}></div>
             <div className={position}></div>
