@@ -1,15 +1,22 @@
 const playerList = [
-    // id = plyayer ID
-    // lap/question ID, first question ID is 0
-    // timer = seconds in total
-    // drs = skip 1 lap/question
-    // pit = get extra time without being counted in timer
+    /*
+    > Each correct answer complete 1 lap
+    > Each wrong attempt(*) get 5 seconds penalty
+    > You can open DRS once. (to skip 1 question)
+    > You cannot use DRS in 1st or last lap
+    > You can enter the pit and get support once (Only left with 2 answers) (but will spend 10 seconds)
+    > 1st place get 25 points
+    > 2nd place get 19 points
+    > 3rd place get 15 points
+    > 4th place get 10 points
+    */
     {
         "id": 1,
         "name": "Player 1",
         "nationality": "GBR",
         "lap": 0, 
         "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -20,6 +27,7 @@ const playerList = [
         "nationality": "GBR",
         "lap": 0,
         "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -30,6 +38,7 @@ const playerList = [
         "nationality": "GBR",
         "lap": 0,
         "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -40,6 +49,7 @@ const playerList = [
         "nationality": "GBR",
         "lap": 0,
         "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
