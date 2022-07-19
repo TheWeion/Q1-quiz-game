@@ -16,6 +16,7 @@ const playerList = [
         "nationality": "GBR",
         "lap": 0, 
         "timer": 0.0,
+        "timer_start": false,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -26,6 +27,7 @@ const playerList = [
         "nationality": "GBR",
         "lap": 0,
         "timer": 0.0,
+        "timer_start": false,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -36,6 +38,7 @@ const playerList = [
         "nationality": "GBR",
         "lap": 0,
         "timer": 0.0,
+        "timer_start": false,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -46,6 +49,7 @@ const playerList = [
         "nationality": "GBR",
         "lap": 0,
         "timer": 0.0,
+        "timer_start": false,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
