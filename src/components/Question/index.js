@@ -193,8 +193,7 @@ const Question = ({playerId, players, questions}) => {
 
     return (
         <>
-            <h1>Timer: <Timer time={time} /></h1>
-            <h1>Penalty: <Timer time={penalty} /></h1>
+            <h1>Timer: <Timer time={time + penalty} /></h1>
             <div id="question_content">    
             </div>
         </>
