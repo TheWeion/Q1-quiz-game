@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -7,27 +8,98 @@ const Question = ({playerId}) => {
     const questions = useSelector(state => state.questionsReducer);
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     const targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
 
-    const nextQuestion = () => {
+    const setEnteredPit = () => {
         let player = targetPlayer;
-        player.lap = player.lap + 1;
+        player.pit_entered = true;
         dispatch(updatePlayer(player));
-        renderHTML();
     };
 
-    const renderHTML = () => {
+    const moveToNextLap = () => {
+        let player = targetPlayer;
+        if ((targetPlayer.lap + 1) !== questions.length) {
+            player.lap = player.lap + 1;
+            dispatch(updatePlayer(player));
+        } else {
+            alert('Finish');
+            navigate('/gameover');
+        }
+    };
+
+    const applyPenalty = (second) => {
+        let player = targetPlayer;
+        player.timer = player.timer + second;
+        dispatch(updatePlayer(player));
+    };
+
+    const setDrsUsed = () => {
+        let player = targetPlayer;
+        player.drs_used = true;
+        dispatch(updatePlayer(player));
+    };
+
+    const handleCorrectAnswer = () => {
+        alert("Correct");
+        moveToNextLap();
+        renderQuestionHTML(false);
+    };
+
+    const handleIncorrectAnswer = () => {
+        alert("Ouch, incorrect");
+        applyPenalty(5.0);
+        renderQuestionHTML(false);
+    };
+
+    const handleDrs = () => {
+        // If not the 1st or the last lap
+        if ((targetPlayer.lap + 1) !== 1 && (targetPlayer.lap + 1) !== questions.length) {
+            if (!targetPlayer.drs_used) {
+                alert("DRS");
+                setDrsUsed();
+                moveToNextLap();
+                renderQuestionHTML(false);
+            } else {
+                alert("Ouch, no more DRS");
+            }
+        } else {
+            alert("You are not allowed to open DRS in lap: " + (targetPlayer.lap + 1));
+        }        
+    };
+
+    const handlePit = () => {
+        if (!targetPlayer.pit_entered) {
+            alert("Box box");
+            setEnteredPit();
+            applyPenalty(10.0);
+            // Elimilate 2 answers
+            renderQuestionHTML(true);
+        } else {
+            alert("Oops, no more pit stop");
+        }
+    };
+
+    const renderQuestionHTML = (elimilateIncorrectAnswers) => {
         let html;
         let curQuestion = questions[targetPlayer.lap];
         if (curQuestion !== undefined && curQuestion !== null) {
             if (curQuestion !== undefined && curQuestion !== null) {
                 
                 html = `
+                    <h1>Lap ${ (targetPlayer.lap + 1) } </h1>
+                    <h1>Timer ${ (targetPlayer.timer) }s </h1>
+                    <br />
                     <h1>${ curQuestion.category }</h1>
                     <h3>${ curQuestion.question }</h3>
                     <ul>`;
                         let correct = curQuestion.correct_answer;
                         let list = curQuestion.incorrect_answers;
+                        if (elimilateIncorrectAnswers) {
+                            list = [];
+                            list[0] = curQuestion.incorrect_answers[0];
+                        }
                         const positionInsertCorrectAnswer = Math.round(Math.random()*(curQuestion.incorrect_answers.length + 1));
                         if (!list.includes(correct)) {
                             list.splice(positionInsertCorrectAnswer, 0, correct);
@@ -46,10 +118,9 @@ const Question = ({playerId}) => {
                     if (curButton !== undefined && curButton !== null) {
                         curButton.addEventListener('click', ()=>{
                             if (cur === curQuestion.correct_answer) {
-                                alert("Correct");
-                                nextQuestion();
+                                handleCorrectAnswer();
                             } else {
-                                alert("Incorrect");
+                                handleIncorrectAnswer();
                             }
                         });
                     }
@@ -59,14 +130,16 @@ const Question = ({playerId}) => {
     };
 
     useEffect(()=>{
-        renderHTML();
+        renderQuestionHTML(false);
     }, [players]);
 
     return (
         <>
             <div id="question_content">
-                { renderHTML() }    
+                { renderQuestionHTML(false) }    
             </div>
+            <button onClick={()=>handleDrs()}>Open RDS</button><p>*Skip 1 question</p><br />
+            <button onClick={()=>handlePit()}>Enter Pit</button><p>*Eliminate 2 incorrect answers</p>
         </>
     );
 };
