@@ -54,18 +54,18 @@ const Question = ({playerId, players, questions}) => {
     };
 
     const handleDrs = () => {
-        // If not the 1st or the last lap
-        if ((targetPlayer.lap + 1) !== 1 && (targetPlayer.lap + 1) !== questions.length) {
-            if (!targetPlayer.drs_used) {
+        if (!targetPlayer.drs_used) {
+            // If not the 1st or the last lap
+            if ((targetPlayer.lap + 1) !== 1 && (targetPlayer.lap + 1) !== questions.length) {
                 alert("DRS opened");
                 setDrsUsed();
                 moveToNextLap();
                 renderQuestionHTML(false);
             } else {
-                alert("Ouch, no more DRS");
+                alert("You are not allowed to open DRS in lap: " + (targetPlayer.lap + 1));
             }
         } else {
-            alert("You are not allowed to open DRS in lap: " + (targetPlayer.lap + 1));
+            alert("Ouch, no more DRS");
         }        
     };
 
