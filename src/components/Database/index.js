@@ -1,5 +1,4 @@
-const UserScores = () => {
-    return ([
+const UserScores = [
         
     {
         id: 1,
@@ -31,6 +30,8 @@ const UserScores = () => {
         name: "Mitsy",
         score: 24000
     },
-])}
+]
 
-export default UserScores;
+const HighestToLowest = [...UserScores].sort((a,b)=>b.score-a.score)
+
+export default HighestToLowest;
