@@ -30,6 +30,11 @@ const UserScores = [
         name: "Mitsy",
         score: 24000
     },
+    {
+        id:7,
+        name:"Yoni",
+        score: 59000
+    }
 ]
 
 const HighestToLowest = [...UserScores].sort((a,b)=>b.score-a.score)
