@@ -24,7 +24,6 @@ const GetQuestions = () => {
                 }
                 const axios = require('axios');
                 axios.get(url).then((cur)=>{
-                    console.log(cur);
                     if (cur.data.response_code === 0) {
                         resolve(cur.data.results);
                     } else {
@@ -36,7 +35,6 @@ const GetQuestions = () => {
             }
           });
         questions.then((cur)=>{
-            console.log(cur);
             dispatch(setQuestions(cur));
             navigate("../rules");
         });
@@ -48,7 +46,6 @@ const GetQuestions = () => {
         const lap = document.getElementById("lap").value;
         const difficulty = document.getElementById("difficulty").value;
         generateQuestions(lap, difficulty, topic);
-        console.log(topic, lap, difficulty);
     };
 
     const renderHTML = () => {

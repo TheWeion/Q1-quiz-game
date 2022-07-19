@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
-import {useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import Timer from '../Timer';
 
 const Question = ({playerId, players, questions}) => {
     const dispatch = useDispatch();
@@ -10,46 +11,72 @@ const Question = ({playerId, players, questions}) => {
 
     const targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
 
+    const [time, setTime] = useState(0);
+    const [penalty, setPenalty] = useState(0);
+    const [clockRunning, setClockRunning] = useState(false);
+
+    useEffect(() => {
+        let interval;
+        if (clockRunning) {
+            interval = setInterval(()=>{
+                setTime((prevTime) => prevTime + 10);
+            }, 10);
+        } else {
+            if (time !== targetPlayer.timer) {
+                let player = targetPlayer;
+                player.timer = time;
+                updatePlayerRedux(player);
+                setTime(player.timer);
+                setPenalty(player.penalty);
+            }
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    }, [clockRunning]);
+
+    useEffect(()=>{
+        renderQuestionHTML(false);
+    }, [clockRunning]);
+
     const setEnteredPit = () => {
         let player = targetPlayer;
         player.pit_entered = true;
-        dispatch(updatePlayer(player));
+        updatePlayerRedux(player);
     };
 
     const moveToNextLap = () => {
         let player = targetPlayer;
         if ((targetPlayer.lap + 1) !== questions.length) {
             player.lap = player.lap + 1;
-            dispatch(updatePlayer(player));
+            updatePlayerRedux(player);
         } else {
             alert('Finish');
-            player.timer_start = false;
-            dispatch(updatePlayer(player));
             navigate('/gameover');
         }
     };
 
     const applyPenalty = (second) => {
         let player = targetPlayer;
-        player.timer = player.timer + second;
-        dispatch(updatePlayer(player));
+        let newVal = player.penalty + second;
+        player.penalty = newVal;
+        updatePlayerRedux(player);
     };
 
     const setDrsUsed = () => {
         let player = targetPlayer;
         player.drs_used = true;
-        dispatch(updatePlayer(player));
+        updatePlayerRedux(player);
     };
 
     const handleCorrectAnswer = () => {
+        setClockRunning(false);
         alert("Correct");
         moveToNextLap();
-        renderQuestionHTML(false);
     };
 
     const handleIncorrectAnswer = () => {
         alert("Ouch, incorrect");
-        applyPenalty(5.0);
+        applyPenalty(5000);
         renderQuestionHTML(false);
     };
 
@@ -57,10 +84,10 @@ const Question = ({playerId, players, questions}) => {
         if (!targetPlayer.drs_used) {
             // If not the 1st or the last lap
             if ((targetPlayer.lap + 1) !== 1 && (targetPlayer.lap + 1) !== questions.length) {
-                alert("DRS opened");
+                setClockRunning(false);
                 setDrsUsed();
+                alert("DRS opened");
                 moveToNextLap();
-                renderQuestionHTML(false);
             } else {
                 alert("You are not allowed to open DRS in lap: " + (targetPlayer.lap + 1));
             }
@@ -73,8 +100,8 @@ const Question = ({playerId, players, questions}) => {
         if (!targetPlayer.pit_entered) {
             alert("Box box");
             setEnteredPit();
-            applyPenalty(10.0);
-            // Elimilate 2 answers
+            applyPenalty(10000);
+            // Elimilate 2 incorrect answers
             renderQuestionHTML(true);
         } else {
             alert("Oops, no more pit stop");
@@ -82,11 +109,11 @@ const Question = ({playerId, players, questions}) => {
     };
 
     const handleStartTimer = () => {
-        let player = targetPlayer;
-        player.timer = 0.0;
-        player.timer_start = true;
+        setClockRunning(true);
+    };
+
+    const updatePlayerRedux = (player) => {
         dispatch(updatePlayer(player));
-        renderQuestionHTML(false);
     };
 
     const renderQuestionHTML = (elimilateIncorrectAnswers) => {
@@ -95,15 +122,10 @@ const Question = ({playerId, players, questions}) => {
         if (curQuestion !== undefined && curQuestion !== null) {
             if (curQuestion !== undefined && curQuestion !== null) {
                 
-                html = `
-                    <h1>Lap: ${ (targetPlayer.lap + 1) } </h1>
-                    <h1>Timer: ${ (targetPlayer.timer) }s </h1>
-                    <h1>Timer start: ${ (targetPlayer.timer_start) } </h1>
-                    <br />`;
-                
+                html = `<h1>Lap: ${ (targetPlayer.lap + 1) } </h1><br></br>`;
                 let list = [];
-                if (!targetPlayer.timer_start) {
-                    html = html + `<h2>Get ready?</h2>`;
+                if (!clockRunning) {
+                    html = html + `<h2>Ready?</h2>`;
                     html = html + `<button id="start_button">I'm ready</button><br></br>`;
                 } else {
                     html = html + `
@@ -171,8 +193,9 @@ const Question = ({playerId, players, questions}) => {
 
     return (
         <>
-            <div id="question_content">
-                { renderQuestionHTML(false) }    
+            <h1>Timer: <Timer time={time} /></h1>
+            <h1>Penalty: <Timer time={penalty} /></h1>
+            <div id="question_content">    
             </div>
         </>
     );
