@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -6,6 +7,8 @@ const Question = ({playerId}) => {
     const players = useSelector(state => state.playersReducer);
     const questions = useSelector(state => state.questionsReducer);
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
 
@@ -17,8 +20,13 @@ const Question = ({playerId}) => {
 
     const moveToNextLap = () => {
         let player = targetPlayer;
-        player.lap = player.lap + 1;
-        dispatch(updatePlayer(player));
+        if ((targetPlayer.lap + 1) !== questions.length) {
+            player.lap = player.lap + 1;
+            dispatch(updatePlayer(player));
+        } else {
+            alert('Finish');
+            navigate('/gameover');
+        }
     };
 
     const applyPenalty = (second) => {
