@@ -122,7 +122,7 @@ const Question = ({playerId, players, questions}) => {
         if (curQuestion !== undefined && curQuestion !== null) {
             if (curQuestion !== undefined && curQuestion !== null) {
                 
-                html = `<h1>Lap: ${ (targetPlayer.lap + 1) } </h1><br></br>`;
+                html = `<h1>Lap: ${ (targetPlayer.lap + 1) } / ${ questions.length } </h1><br></br>`;
                 let list = [];
                 if (!clockRunning) {
                     html = html + `<h2>Ready?</h2>`;
