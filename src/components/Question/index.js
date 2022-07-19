@@ -118,6 +118,8 @@ const Question = ({playerId}) => {
 
     return (
         <>
+            <h1>Lap { (targetPlayer.lap + 1) } </h1>
+            <br />
             <div id="question_content">
                 { renderQuestionHTML() }    
             </div>
