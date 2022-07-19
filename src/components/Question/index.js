@@ -9,14 +9,69 @@ const Question = ({playerId}) => {
 
     const targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
 
-    const nextQuestion = () => {
+    const setEnteredPit = () => {
+        let player = targetPlayer;
+        player.pit_entered = true;
+        dispatch(updatePlayer(player));
+    };
+
+    const moveToNextLap = () => {
         let player = targetPlayer;
         player.lap = player.lap + 1;
         dispatch(updatePlayer(player));
-        renderHTML();
     };
 
-    const renderHTML = () => {
+    const applyPenalty = (second) => {
+        let player = targetPlayer;
+        player.timer = player.timer + second;
+        dispatch(updatePlayer(player));
+    };
+
+    const setDrsUsed = () => {
+        let player = targetPlayer;
+        player.drs_used = true;
+        dispatch(updatePlayer(player));
+    };
+
+    const handleCorrectAnswer = () => {
+        alert("Correct");
+        moveToNextLap();
+        renderQuestionHTML();
+    };
+
+    const handleIncorrectAnswer = () => {
+        alert("Ouch, incorrect");
+        applyPenalty(5.0);
+    };
+
+    const handleDrs = () => {
+        // If not the 1st or the last lap
+        if ((targetPlayer.lap + 1) !== 1 && (targetPlayer.lap + 1) !== questions.length) {
+            if (!targetPlayer.drs_used) {
+                alert("DRS");
+                setDrsUsed();
+                moveToNextLap();
+                renderQuestionHTML();
+            } else {
+                alert("Ouch, no more DRS");
+            }
+        } else {
+            alert("You are not allowed to open DRS in lap: " + (targetPlayer.lap + 1));
+        }        
+    };
+
+    const handlePit = () => {
+        if (!targetPlayer.pit_entered) {
+            alert("Box box");
+            setEnteredPit();
+            applyPenalty(10.0);
+            // Elimilate 2 answers
+        } else {
+            alert("Oops, no more pit stop");
+        }
+    };
+
+    const renderQuestionHTML = () => {
         let html;
         let curQuestion = questions[targetPlayer.lap];
         if (curQuestion !== undefined && curQuestion !== null) {
@@ -46,10 +101,9 @@ const Question = ({playerId}) => {
                     if (curButton !== undefined && curButton !== null) {
                         curButton.addEventListener('click', ()=>{
                             if (cur === curQuestion.correct_answer) {
-                                alert("Correct");
-                                nextQuestion();
+                                handleCorrectAnswer();
                             } else {
-                                alert("Incorrect");
+                                handleIncorrectAnswer();
                             }
                         });
                     }
@@ -59,14 +113,16 @@ const Question = ({playerId}) => {
     };
 
     useEffect(()=>{
-        renderHTML();
+        renderQuestionHTML();
     }, [players]);
 
     return (
         <>
             <div id="question_content">
-                { renderHTML() }    
+                { renderQuestionHTML() }    
             </div>
+            <button onClick={()=>handleDrs()}>Open RDS</button><p>*Skip 1 question</p><br />
+            <button onClick={()=>handlePit()}>Enter Pit</button><p>*Eliminate 2 incorrect answers</p>
         </>
     );
 };
