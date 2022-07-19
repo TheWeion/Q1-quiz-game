@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { Outlet } from 'react-router-dom';
+
 //import {Howl} from "howler"
+
 import './style.css'
 
 
@@ -14,6 +16,7 @@ const Timeline = ({player, questions}) => {
   const changePosition = (e) => {
     e.preventDefault("");
     setPosition("correct-line1");
+
     //callMySound(soundSrc);
   }
 
