@@ -8,9 +8,9 @@ import './style.css'
 const Timeline = ({player, questions}) => {
 
   const [position, setPosition] = useState("progress-line1"); 
-  //const [score, setScore] = useState(false);
-  //useEffect
   
+
+  //now i need to have a function whereby it moves the position once the correct question is pressed 
   const changePosition = (e) => {
     e.preventDefault("");
     setPosition("correct-line1");
