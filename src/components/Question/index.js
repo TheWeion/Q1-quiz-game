@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { updatePlayer } from "../../actions";
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
 
-const Question = ({playerId}) => {
-    const players = useSelector(state => state.playersReducer);
-    const questions = useSelector(state => state.questionsReducer);
+const Question = ({playerId, players, questions}) => {
     const dispatch = useDispatch();
 
     const targetPlayer = players.filter((cur)=>cur.id===playerId)[0];

@@ -1,34 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { Outlet } from 'react-router-dom';
 import {Howl} from "howler"
 import './style.css'
-import {useSelector} from "react-redux";
 
 
-const Timeline = () => {
 
-  const players = useSelector(state => state.playersReducer);
-  const questions = useSelector(state => state.questionsReducer);
+const Timeline = ({player, questions}) => {
 
   const [position, setPosition] = useState("progress-line1"); 
   //const [score, setScore] = useState(false);
   //useEffect
-
+  
   const changePosition = (e) => {
     e.preventDefault("");
     setPosition("correct-line1");
     callMySound(soundSrc);
   }
-
-console.log(players)
-console.log(questions)
-
-useEffect(() => {
-  setPosition("correct-line1");
-  console.log(players)
-},[players[0].lap])
-
-
 
   const soundSrc = '../../../public/engine.mp3';
 
