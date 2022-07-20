@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Outlet } from 'react-router-dom';
 import DOMPurify from 'dompurify';
-
 //import {Howl} from "howler"
 
 import './style.css';
@@ -21,7 +20,17 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
   //dynamic values 
   //make each car move separate 
 
-  //callMySound(soundSrc);
+
+  //const soundSrc = ('../../../public/engine.mp3');
+
+  /*const callMySound = (src) => {
+    const sound= new Howl({
+      src, 
+      html5: true
+    })
+    sound.play()
+  };
+  */
 
   useEffect(()=> {
     let player1PositionClass = "progress-line1";
@@ -31,34 +40,78 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
         player1PositionClass = "progress-line1";
       } else {
         if (player1 === ind) {
-          player1PositionClass = "correct-line" + ind; 
-        }
+         // callMySound(soundSrc);
+        player1PositionClass = "correct-line" + ind;
       }
+    }
     }
     setPlayer1Position(player1PositionClass);
   },[player1]);
-  
-    //callMySound(soundSrc);
-  
-  
 
-  /*const soundSrc = '../../../public/engine.mp3';
+  useEffect(()=> {
+    let player2PositionClass = "progress-line1";
+    console.log(totalLap);
+    for (let ind = 0; ind < totalLap; ind++) {
+      if (player2 === 0) {
+        player2PositionClass = "progress-line1";
+      } else {
+        if (player2 === ind) {
+        player2PositionClass = "correct-line" + ind;
+      }
+    }
+  }
+    setPlayer2Position(player2PositionClass);
+  },[player2]);
 
-  const callMySound = (src) => {
-    const sound= new Howl({
-      src, 
-      html5: true
-    })
-    sound.play()
-  }*/
+  useEffect(()=> {
+    let player3PositionClass = "progress-line1";
+    console.log(totalLap);
+    for (let ind = 0; ind < totalLap; ind++) {
+      if (player3 === 0) {
+        player3PositionClass = "progress-line1";
+      } else {
+        if (player3 === ind) {
+        player3PositionClass = "correct-line" + ind;
+      }
+    }
+  }
+    setPlayer3Position(player3PositionClass);
+  },[player3]);
+
+  useEffect(()=> {
+    let player4PositionClass = "progress-line1";
+    console.log(totalLap);
+    for (let ind = 0; ind < totalLap; ind++) {
+      if (player4 === 0) {
+        player4PositionClass = "progress-line1";
+      } else {
+        if (player1 === ind) {
+        player4PositionClass = "correct-line" + ind;
+      }
+    }
+  }
+    setPlayer4Position(player4PositionClass);
+  },[player4]);
+
 
   const generateLabel = () => {
     let html = ``;
-    for (let ind = 0; ind < totalLap; ind++) {
-      html = html + `<label>L ${ind + 1}</label>`;
-    }
-    return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
-  };
+    if(totalLap == 5){
+      for (let ind = 0; ind < totalLap; ind++) {
+        html = html + `<label>L ${ind + 1}</label>`;
+      }
+      }else if(totalLap == 10){
+        for (let ind = 0; ind < totalLap; ind++) {
+          html = html + `<label class='label1'>L ${ind + 1}</label>`;
+        }
+      }else if(totalLap == 15){
+        for (let ind = 0; ind < totalLap; ind++) {
+          html = html + `<label class='label2'>L ${ind + 1}</label>`;
+        }
+      }
+      return <div dangerouslySetInnerHTML={{__html: html}}/>;
+    };
+    
 
   return (
     <>  
@@ -69,9 +122,9 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
             <div className={player3Position}></div>
             <div className={player4Position}></div>
           </div>
-          { generateLabel() }
-                <h3>You must answer a question correctly to have enough fuel to drive to the finish line</h3>
-                     
+          <div className='label-wrap'>
+          { generateLabel() }       
+          </div>    
         </header>
         <Outlet />
     </>
@@ -89,3 +142,5 @@ export default Timeline;
 //for(let i=0; i<questions.length; i++){
   console.log(questions[i])
   if(questions[i].correct_answer ==  ){*/
+
+  //I might generate the cars and then loop through the css the same way the label has been generated maybe 
