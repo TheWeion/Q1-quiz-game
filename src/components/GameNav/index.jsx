@@ -34,6 +34,7 @@ const GameNav = () => {
 			break;
 		case '/gameover':
 			isNextVisible = true;
+			isBackVisible = false;
 			navLoc = '/';
 			navText = 'See you on the Road!';
 			break;
