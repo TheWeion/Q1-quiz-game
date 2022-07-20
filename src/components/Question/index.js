@@ -6,9 +6,11 @@ import Timer from '../Timer';
 import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
 import './style.css'
+import Timeline from '../Timeline';
 
 const Question = ({playerId, players, questions}) => {
     const dispatch = useDispatch();
+
 
     const navigate = useNavigate();
 
@@ -340,6 +342,9 @@ const Question = ({playerId, players, questions}) => {
                 </div>
                 <div class="col-2">
                     <Radio message={radioMessage} />
+                </div>
+                <div className='wrapper2'>
+                    <Timeline players={players}/>
                 </div>
             </div>
             
