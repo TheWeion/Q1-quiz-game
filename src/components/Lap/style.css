@@ -3,7 +3,7 @@
     src: local('E1234.ttf'), url('../../font/E1234.ttf') format('truetype');
 }
 
-.timer{
+.lap{
     font-family: timerFont;
     background-color: black;
     color: white;
@@ -12,7 +12,7 @@
     font-size: 300%;
 }
 
-.timer-label {
+.lap-label {
     font-family: 'Racing Sans One';
     display: inline;
     font-size: 300%;
