@@ -1,9 +1,5 @@
-html, body {
-	overflow: hidden;
-}
-
 body {
-	position: relative
+	overflow: hidden;
 }
 
 .App {
@@ -14,15 +10,6 @@ body {
   height: 40vmin;
   pointer-events: none;
 }
-
-/*
-i wanted to try add this but it doesn't show up
-.Logo1{
-	content: url(../public/q1LOGO.png);
-	width:200px;
-	height:200px;
-}
-*/
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

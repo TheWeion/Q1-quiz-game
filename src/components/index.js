@@ -7,3 +7,4 @@ export {default as GameNav} from './GameNav';
 export {default as Timeline} from './Timeline';
 export {default as UserScores} from './Database';
 export {default as Profiles} from './Profiles';
+export {default as Podium} from './Podium';

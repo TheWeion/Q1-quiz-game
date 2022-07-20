@@ -6,8 +6,7 @@ const Radio = ({message}) => {
         <>
             <div className='Wrapper'>
                 <span className='radioSpan'>Radio</span>
-                <img src='waveform.jpg' className='waveform'></img>
-                <h3 className='h31'>{ message }</h3>
+                <h3>{ message }</h3>
             </div>
         </>
     )
