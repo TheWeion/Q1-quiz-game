@@ -271,7 +271,7 @@ const Question = ({playerId, players, questions}) => {
                         html = html + `
                         <div class="row">
                             <div class="col">
-                                <h2>Ready?</h2>
+                                <div class="question_content">Ready?</div>
                                 <button id="start_button" class="btn btn-primary">I'm ready</button>
                             </div>
                         </div>`;
@@ -308,7 +308,7 @@ const Question = ({playerId, players, questions}) => {
                                         <div class="question_number">${ index + 1 }.</div>
                                     </div>
                                     <div class="col">
-                                        <button id="button_${ index }" class="btn btn-primary">${ cur.value }</button>
+                                        <button id="button_${ index }" class="btn btn-primary question_choice">${ cur.value }</button>
                                         <div id="correct_message_${ index }" class="correct_message"></div>
                                         <div id="incorrect_message_${ index }" class="incorrect_message"></div>
                                     </div>

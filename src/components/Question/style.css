@@ -1,16 +1,23 @@
 .question_category {
     color: black;
+    font-family: 'Racing Sans One';
     font-weight: bold;
     font-size: 250%;
 }
 
 .question_content {
     color: black;
+    font-family: 'Racing Sans One';
     font-size: 200%;
+}
+
+.question_choice {
+    font-size: 100%;
 }
 
 .question_number {
     color: black;
+    font-family: 'Racing Sans One';
     font-size: 200%;
 }
 
