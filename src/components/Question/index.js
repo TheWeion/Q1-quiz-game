@@ -271,7 +271,7 @@ const Question = ({playerId, players, questions}) => {
                         html = html + `
                         <div class="row">
                             <div class="col">
-                                <h2>Ready?</h2>
+                                <div class="question_content">Ready?</div>
                                 <button id="start_button" class="btn btn-primary">I'm ready</button>
                             </div>
                         </div>`;
@@ -308,7 +308,7 @@ const Question = ({playerId, players, questions}) => {
                                         <div class="question_number">${ index + 1 }.</div>
                                     </div>
                                     <div class="col">
-                                        <button id="button_${ index }" class="btn btn-primary">${ cur.value }</button>
+                                        <button id="button_${ index }" class="btn btn-primary question_choice">${ cur.value }</button>
                                         <div id="correct_message_${ index }" class="correct_message"></div>
                                         <div id="incorrect_message_${ index }" class="incorrect_message"></div>
                                     </div>
@@ -394,7 +394,7 @@ const Question = ({playerId, players, questions}) => {
     return (
         <>
             <Timer time={time + penalty} /><br></br>
-            <Lap lap={lap + 1} total={questions.length} /><br></br>
+            <Lap lap={lap + 1} total={questions.length} finish={gameFinish} /><br></br>
             <hr></hr>
             <div class="row">
                 <div class="col-10">
@@ -405,7 +405,7 @@ const Question = ({playerId, players, questions}) => {
                 </div>
                 <hr></hr>
                 <div className='wrapper2'>
-                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={5} />
+                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={questions.length} />
                 </div>
             </div>
             

@@ -1,10 +1,21 @@
 import React from "react";
-import './style.css'
+import './style.css';
+import DOMPurify from 'dompurify';
 
-const Lap = ({lap, total}) => {
+const Lap = ({lap, total, finish}) => {
+  const renderHTML = (lap, total, finish) => {
+    let html = ``;
+    if (finish) {
+      html = `<div class="lap-label">Lap:</div><div class="lap"><span>FINISH</span></div>`;
+    } else {
+      html = `<div class="lap-label">Lap:</div><div class="lap"><span>${lap}</span></div><div class="lap-label">/</div><div class="lap"><span>${total}</span></div>`;
+    }
+    return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
+  };
+
   return (
     <>
-      <div class="lap-label">Lap:</div><div class="lap"><span>{lap}</span></div><div class="lap-label">/</div><div class="lap"><span>{total}</span></div>
+      { renderHTML(lap, total, finish) }
     </>
   );
 };
