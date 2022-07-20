@@ -57,7 +57,7 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
     for (let ind = 0; ind < totalLap; ind++) {
       html = html + `<label>L ${ind + 1}</label>`;
     }
-    return <div dangerouslySetInnerHTML={{__html: html}}/>;
+    return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
   };
 
   return (
