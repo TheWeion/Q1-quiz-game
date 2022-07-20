@@ -73,15 +73,17 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
         html = html + `<div class='col'></div>`;
       }
     }
-    html = html + `</div>`
+    html = html + `</div>`;
     return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
   };
   
   const generateLabel = () => {
-    let html = ``;
+    let html = `
+      <div class='row'>`;
     for (let ind = 0; ind < totalLap; ind++) {
-      html = html + `<label style='width: ${ (1/totalLap)*100}%; padding-left: 5px;'>L ${ind + 1}</label>`;
+      html = html + `<div class='col'>L ${ind + 1}</div>`;
     }
+    html = html + `</div>`;
     return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
   };
     
