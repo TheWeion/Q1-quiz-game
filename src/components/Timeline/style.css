@@ -10,7 +10,7 @@
 
 } 
 
-.progress-line1, .progress-line2, .progress-line3, .progress-line4 {
+.progress-line1 {
      width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
@@ -22,15 +22,99 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 100px;
+     margin-left: 60px;
      content: url(../../../public/TestCar.png);
 }
 
+.correct-line2{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 150px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line3{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 240px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line4{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 330px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line5{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 420px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line6{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 510px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line7{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 600px;
+     content: url(../../../public/TestCar.png);
+}
+ 
+.correct-line8{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 690px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line9{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 780px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line10{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 870px;
+     content: url(../../../public/TestCar.png);
+}
+
+
 label{
-    display: inline-block;
-    padding: 5px;
-    padding-left: 100px;
     font-family: 'Racing Sans One';
+    padding-left: 150px;
+}
+
+.label1{
+    padding-left: 70px;
+}
+
+.label2{
+    padding-left: 40px;
+}
+
+.label-wrap{
+    display: flex;
+    flex-direction: row;
 }
 
 .Cbtn{
