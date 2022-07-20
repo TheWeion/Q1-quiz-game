@@ -1,26 +1,8 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import CloseButton from 'react-bootstrap/CloseButton';
 
 const Rules = () => {
-	const navigate = useNavigate();
-
-	const handleClick = () => {
-		navigate(-1);
-	}
-
-	const exitHandler = () => {
-		navigate('/');
-	}
-
-	const gameHandler = () => {
-		navigate('/game');
-	}
-
 	return (
 	<>
-		<CloseButton id="nav-exit" onClick={exitHandler} />
 		<h1>Rules</h1>
 		<ul>
 			<li>Each correct answer completes 1 lap</li>
@@ -33,9 +15,6 @@ const Rules = () => {
 			<li>3rd Place - Will earn you 15 additional points</li>
 			<li>4th Place - Will earn you 10 additional points</li>
 		</ul>
-		<Button id="nav-next" onClick={gameHandler}>Engine Start</Button>
-		<Button id="nav-back" variant="danger" onClick={handleClick}>Back</Button>
-
 	</>
   );
 };

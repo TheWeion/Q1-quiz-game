@@ -17,4 +17,4 @@ const Game = () => {
 	);
 }
 
-export default Game;
+export default Game

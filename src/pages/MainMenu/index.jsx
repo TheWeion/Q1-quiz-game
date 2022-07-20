@@ -1,7 +1,5 @@
 import React from 'react';
 import logo from './logo.svg';
-import { NavLink, useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 
 const MainMenu = () => {
 	  return (
@@ -12,7 +10,6 @@ const MainMenu = () => {
 						{/* <MenuForm /> */}
 					</div>
 				</div>
-				<Button id="nav-next" href="/intro">Join</Button>
 		</>
   );
 };
