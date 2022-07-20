@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Outlet } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
 //import {Howl} from "howler"
 
@@ -51,6 +52,13 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
     sound.play()
   }*/
 
+  const generateLabel = () => {
+    let html = ``;
+    for (let ind = 0; ind < totalLap; ind++) {
+      html = html + `<label>L ${ind + 1}</label>`;
+    }
+    return <div dangerouslySetInnerHTML={{__html: html}}/>;
+  };
 
   return (
     <>  
@@ -61,17 +69,7 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
             <div className={player3Position}></div>
             <div className={player4Position}></div>
           </div>
-                <label>L1</label>
-                <label>L2</label>
-                <label>L3</label>
-                <label>L4</label>
-                <label>L5</label>
-                <label>L6</label>
-                <label>L7</label>
-                <label>L8</label>
-                <label>L9</label>
-                <label>L10</label>
-
+          { generateLabel() }
                 <h3>You must answer a question correctly to have enough fuel to drive to the finish line</h3>
                      
         </header>
