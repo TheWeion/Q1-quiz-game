@@ -84,8 +84,6 @@ const Timeline = ({players, handleClick}) => {
                 <label>L8</label>
                 <label>L9</label>
                 <label>L10</label>
-
-                <h3>You must answer a question correctly to have enough fuel to drive to the finish line</h3>
                      
         </header>
         <Outlet />
