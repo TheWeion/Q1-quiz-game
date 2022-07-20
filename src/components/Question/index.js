@@ -394,7 +394,7 @@ const Question = ({playerId, players, questions}) => {
     return (
         <>
             <Timer time={time + penalty} /><br></br>
-            <Lap lap={lap + 1} total={questions.length} /><br></br>
+            <Lap lap={lap + 1} total={questions.length} finish={gameFinish} /><br></br>
             <hr></hr>
             <div class="row">
                 <div class="col-10">
