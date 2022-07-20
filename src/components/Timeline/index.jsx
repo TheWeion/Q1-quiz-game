@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
 import { Outlet } from 'react-router-dom';
 
 //import {Howl} from "howler"
 
-import './style.css'
+import './style.css';
 
 
 
-const Timeline = ({players, handleClick}) => {
+const Timeline = ({player1, player2, player3, player4, totalLap}) => {
 
-  const [position, setPosition] = useState("progress-line1"); 
-  const [position1, setPosition1] = useState("progress-line1");
-  const [position2, setPosition2] = useState("progress-line1");
-  const [position3, setPosition3] = useState("progress-line1");
+  const [player1Position, setPlayer1Position] = useState("progress-line1"); 
+  const [player2Position, setPlayer2Position] = useState("progress-line1");
+  const [player3Position, setPlayer3Position] = useState("progress-line1");
+  const [player4Position, setPlayer4Position] = useState("progress-line1");
 
   //now i need to have a function whereby it moves the position once the correct question is pressed 
   //make it so that it doesnt need to be changed
@@ -20,36 +20,20 @@ const Timeline = ({players, handleClick}) => {
   //dynamic values 
   //make each car move separate 
 
+  //callMySound(soundSrc);
+
   useEffect(()=> {
-      for(let i=0; i<players.length; i++){
-      console.log(players[i])
-      if(players[i].lap == 1 ){
-        setPosition("correct-line1")
-        //callMySound(soundSrc);
-      }if(players[i].lap == 2 ){
-        setPosition("correct-line2")
-      }if(players[i].lap == 3 ){
-        setPosition("correct-line3")
-      }if(players[i].lap == 4 ){
-        setPosition("correct-line4")
-      }if(players[i].lap == 5 ){
-        setPosition("correct-line5")
-      }if(players[i].lap == 6 ){
-        setPosition("correct-line6")
-      }if(players[i].lap == 7 ){
-        setPosition("correct-line7")
-      }if(players[i].lap == 8 ){
-        setPosition("correct-line8")
-      }if(players[i].lap == 9 ){
-        setPosition("correct-line9")
-      }if(players[i].lap == 10 ){
-        setPosition("correct-line2")
-      }else{
-        console.log('well that didnt work')
+    let player1PositionClass = "progress-line1";
+    console.log(totalLap);
+    for (let ind = 0; ind < totalLap; ind++) {
+      if (player1 === 0) {
+        player1PositionClass = "progress-line1";
+      } else {
+        player1PositionClass = "correct-line" + ind;
       }
-      setPosition("correct-line1");
     }
-  },[])
+    setPlayer1Position(player1PositionClass);
+  },[player1]);
   
     //callMySound(soundSrc);
   
@@ -67,13 +51,14 @@ const Timeline = ({players, handleClick}) => {
 
 
   return (
-    <>  <header>
+    <>  
+        <header>
           <div className='container1'>
-            <div className={position}></div>
-            <div className={position}></div>
-            <div className={position}></div>
-            <div className={position}></div>
-                     </div>
+            <div className={player1Position}></div>
+            <div className={player2Position}></div>
+            <div className={player3Position}></div>
+            <div className={player4Position}></div>
+          </div>
                 <label>L1</label>
                 <label>L2</label>
                 <label>L3</label>
@@ -87,7 +72,7 @@ const Timeline = ({players, handleClick}) => {
                      
         </header>
         <Outlet />
-            </>
+    </>
   )
 }
 
