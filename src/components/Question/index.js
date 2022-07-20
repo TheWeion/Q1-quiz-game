@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
 import { useDispatch } from "react-redux";
-
 import DOMPurify from 'dompurify';
 import Lap from '../Lap';
-
 import Timer from '../Timer';
 import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
