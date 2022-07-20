@@ -22,7 +22,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 60px;
+     margin-left: 100px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -30,7 +30,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 150px;
+     margin-left: 200px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -38,7 +38,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 240px;
+     margin-left: 300px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -46,7 +46,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 330px;
+     margin-left: 400px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -54,7 +54,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 420px;
+     margin-left: 500px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -62,7 +62,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 510px;
+     margin-left: 600px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -70,7 +70,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 600px;
+     margin-left: 700px;
      content: url(../../../public/TestCar.png);
 }
  
@@ -78,7 +78,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 690px;
+     margin-left: 800px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -86,7 +86,7 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 780px;
+     margin-left: 900px;
      content: url(../../../public/TestCar.png);
 }
 
@@ -94,27 +94,14 @@
     width: 55px;
      padding-bottom: 10px;
      padding-top: 5px;
-     margin-left: 870px;
+     margin-left: 1000px;
      content: url(../../../public/TestCar.png);
 }
-
-
 label{
+    display: inline-block;
+    padding: 5px;
+    padding-left: 100px;
     font-family: 'Racing Sans One';
-    padding-left: 150px;
-}
-
-.label1{
-    padding-left: 70px;
-}
-
-.label2{
-    padding-left: 40px;
-}
-
-.label-wrap{
-    display: flex;
-    flex-direction: row;
 }
 
 .Cbtn{
