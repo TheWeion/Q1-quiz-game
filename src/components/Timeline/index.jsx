@@ -30,9 +30,9 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
         player1PositionClass = "progress-line1";
       } else {
         if (player1 === ind) {
-          player1PositionClass = "correct-line" + ind; 
-        }
+        player1PositionClass = "correct-line" + ind;
       }
+    }
     }
     setPlayer1Position(player1PositionClass);
   },[player1]);
@@ -41,12 +41,14 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
     let player2PositionClass = "progress-line1";
     console.log(totalLap);
     for (let ind = 0; ind < totalLap; ind++) {
-      if (player1 === 0) {
+      if (player2 === 0) {
         player2PositionClass = "progress-line1";
       } else {
+        if (player2 === ind) {
         player2PositionClass = "correct-line" + ind;
       }
     }
+  }
     setPlayer2Position(player2PositionClass);
   },[player2]);
 
@@ -57,9 +59,11 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
       if (player3 === 0) {
         player3PositionClass = "progress-line1";
       } else {
+        if (player3 === ind) {
         player3PositionClass = "correct-line" + ind;
       }
     }
+  }
     setPlayer3Position(player3PositionClass);
   },[player3]);
 
@@ -70,10 +74,12 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
       if (player4 === 0) {
         player4PositionClass = "progress-line1";
       } else {
+        if (player1 === ind) {
         player4PositionClass = "correct-line" + ind;
       }
     }
-    setPlayer2Position(player2PositionClass);
+  }
+    setPlayer4Position(player4PositionClass);
   },[player4]);
   
     //callMySound(soundSrc);

@@ -1,23 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+
 .question_category {
     color: black;
     font-weight: bold;
     font-size: 250%;
+    font-family: 'Racing Sans One';
 }
 
 .question_content {
     color: black;
     font-size: 200%;
+    font-family: 'Racing Sans One';
 }
 
 .question_number {
     color: black;
     font-size: 200%;
+    font-family: 'Racing Sans One';
 }
 
 .answer_number {
     color: black;
     font-size: 200%;
     display: inline;
+    font-family: 'Racing Sans One';
 }
 
 .correct_message {
@@ -25,6 +31,7 @@
     font-weight: bold;
     font-size: 150%;
     display: inline;
+    font-family: 'Racing Sans One';
 }
 
 .incorrect_message {
@@ -32,6 +39,7 @@
     font-weight: bold;
     font-size: 150%;
     display: inline;
+    font-family: 'Racing Sans One';
 }
 
 .no-new-line {
