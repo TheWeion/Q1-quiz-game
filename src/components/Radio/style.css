@@ -1,23 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
 
 .Wrapper{
-    background-color: rgb(2, 25, 74);
+    background-color: rgb(0, 0, 0);
     border-radius: 10px;
     width: 100px;
-    height: 150px;
+    height: 200px;
     float: right;
     margin-right: 15px;
     padding-top: 15px;
+    box-shadow: 1px 2px #808080;
 }
 
-h3{
+.waveform{
+    width: 100px;
+    height: 50px;
+}
+
+.h31{
     padding-top: 30px;
     font-size: 12pt;
     font-family: 'Racing Sans One';
-    color: aliceblue;
+    color: rgb(255, 0, 0);
 }
 
 .radioSpan{
     font-family: 'Racing Sans One';
-    color: aliceblue;
+    color: rgb(255, 0, 0);
+    align-items: center;
 }

@@ -6,6 +6,7 @@ import {useDispatch } from "react-redux";
 const Question = ({playerId, players, questions}) => {
     const dispatch = useDispatch();
 
+
     const navigate = useNavigate();
 
     const targetPlayer = players.filter((cur)=>cur.id===playerId)[0];

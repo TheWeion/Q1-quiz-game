@@ -30,7 +30,7 @@ const Game = () => {
 	return (
 		<>
 			<Question  playerId={1} players = {players} questions = {questions}  />
-			<Timeline  playerId={1} players = {players} />
+			<Timeline  playerId={1} players = {players} questions = {questions}/>
       		<Timer  playerId={1} players = {players}  />
       		<Radio/>
 
