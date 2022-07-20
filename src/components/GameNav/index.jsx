@@ -35,8 +35,9 @@ const GameNav = () => {
 		case '/gameover':
 			isBackVisible = false;
 			isNextVisible = true;
-			navLoc = '/';
-			navText = 'See you on the Road!';
+			navLoc = '/leaderboard';
+			navText = 'Leaderboard';
+			break;
 		case '/leaderboard':
 			navLoc = '/';
 			navText = 'Back to the Main Menu.';
