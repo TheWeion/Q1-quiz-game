@@ -32,6 +32,8 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
   };
   */
 
+  //this useEffect currently only works for the 10 lap I still need to fix the 5 and 15 lap 
+
   useEffect(()=> {
     let player1PositionClass = "progress-line1";
     console.log(totalLap);
@@ -96,15 +98,15 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
 
   const generateLabel = () => {
     let html = ``;
-    if(totalLap == 5){
+    if(totalLap === 5){
       for (let ind = 0; ind < totalLap; ind++) {
         html = html + `<label>L ${ind + 1}</label>`;
       }
-      }else if(totalLap == 10){
+      }else if(totalLap === 10){
         for (let ind = 0; ind < totalLap; ind++) {
           html = html + `<label class='label1'>L ${ind + 1}</label>`;
         }
-      }else if(totalLap == 15){
+      }else if(totalLap === 15){
         for (let ind = 0; ind < totalLap; ind++) {
           html = html + `<label class='label2'>L ${ind + 1}</label>`;
         }
@@ -112,7 +114,6 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
       return <div dangerouslySetInnerHTML={{__html: html}}/>;
     };
     
-
   return (
     <>  
         <header>
