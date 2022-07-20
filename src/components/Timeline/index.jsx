@@ -29,7 +29,9 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
       if (player1 === 0) {
         player1PositionClass = "progress-line1";
       } else {
-        player1PositionClass = "correct-line" + ind;
+        if (player1 === ind) {
+          player1PositionClass = "correct-line" + ind; 
+        }
       }
     }
     setPlayer1Position(player1PositionClass);
