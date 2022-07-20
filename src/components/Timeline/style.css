@@ -18,6 +18,7 @@
      
 }
 
+
 .correct-line1{
     width: 55px;
      padding-bottom: 10px;
@@ -109,3 +110,6 @@ label{
     justify-items: center;
 }
 
+.name{
+    color:whitesmoke;
+}
