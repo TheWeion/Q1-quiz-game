@@ -34,6 +34,45 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
     }
     setPlayer1Position(player1PositionClass);
   },[player1]);
+
+  useEffect(()=> {
+    let player2PositionClass = "progress-line1";
+    console.log(totalLap);
+    for (let ind = 0; ind < totalLap; ind++) {
+      if (player1 === 0) {
+        player2PositionClass = "progress-line1";
+      } else {
+        player2PositionClass = "correct-line" + ind;
+      }
+    }
+    setPlayer2Position(player2PositionClass);
+  },[player2]);
+
+  useEffect(()=> {
+    let player3PositionClass = "progress-line1";
+    console.log(totalLap);
+    for (let ind = 0; ind < totalLap; ind++) {
+      if (player3 === 0) {
+        player3PositionClass = "progress-line1";
+      } else {
+        player3PositionClass = "correct-line" + ind;
+      }
+    }
+    setPlayer3Position(player3PositionClass);
+  },[player3]);
+
+  useEffect(()=> {
+    let player4PositionClass = "progress-line1";
+    console.log(totalLap);
+    for (let ind = 0; ind < totalLap; ind++) {
+      if (player4 === 0) {
+        player4PositionClass = "progress-line1";
+      } else {
+        player4PositionClass = "correct-line" + ind;
+      }
+    }
+    setPlayer2Position(player2PositionClass);
+  },[player4]);
   
     //callMySound(soundSrc);
   
