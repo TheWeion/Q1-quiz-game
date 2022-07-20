@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'E1234';
+    src: local('E1234.ttf'), url('./E1234.ttf') format('truetype');
+}
+
 .numbers{
    float: left;
 }
