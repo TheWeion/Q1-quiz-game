@@ -362,7 +362,7 @@ const Question = ({playerId, players, questions}) => {
                     <Radio message={radioMessage} />
                 </div>
                 <div className='wrapper2'>
-                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={5} />
+                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={questions.length} />
                 </div>
             </div>
             
