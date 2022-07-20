@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import CloseButton from 'react-bootstrap/CloseButton';
+import './styles.css';
 
 const GameOver = () => {
 	const navigate = useNavigate();
@@ -21,9 +22,7 @@ const GameOver = () => {
 	return (
 		<>
 			<CloseButton id="nav-exit" onClick={exitHandler} />
-			<h1>Podium</h1>
-			{/* <PodiumRender /> */}
-
+			<img className='podium2'></img>
 			<Button id="nav-next" onClick={leaderboardHandler}>Leaderboard</Button>
 		</>
 	);
