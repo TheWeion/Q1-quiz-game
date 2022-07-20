@@ -15,7 +15,8 @@ const playerList = [
         "name": "Player 1",
         "nationality": "GBR",
         "lap": 0, 
-        "timer": 0.0,
+        "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -25,7 +26,8 @@ const playerList = [
         "name": "Player 2",
         "nationality": "GBR",
         "lap": 0,
-        "timer": 0.0,
+        "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -35,7 +37,8 @@ const playerList = [
         "name": "Player 3",
         "nationality": "GBR",
         "lap": 0,
-        "timer": 0.0,
+        "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false
@@ -45,7 +48,8 @@ const playerList = [
         "name": "Player 4",
         "nationality": "GBR",
         "lap": 0,
-        "timer": 0.0,
+        "timer": 0,
+        "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "is_bot": false

@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Outlet } from 'react-router-dom';
-import {Howl} from "howler"
+
+//import {Howl} from "howler"
+
 import './style.css'
 
 
 
-const Timeline = ({playerId, players, questions, onChange}) => {
+const Timeline = ({players, handleClick}) => {
 
   const [position, setPosition] = useState("progress-line1"); 
   const [position1, setPosition1] = useState("progress-line1");
@@ -18,39 +20,42 @@ const Timeline = ({playerId, players, questions, onChange}) => {
   //dynamic values 
   //make each car move separate 
 
-  const changePosition = (e) => {
-    e.preventDefault("");
-    for(let i=0; i<players.length; i++){
-    console.log(players[i])
-    if(players[i].lap == 1 ){
-      setPosition("correct-line1")
-      callMySound(soundSrc);
-    }if(players[i].lap == 2 ){
-      setPosition("correct-line2")
-    }if(players[i].lap == 3 ){
-      setPosition("correct-line3")
-    }if(players[i].lap == 4 ){
-      setPosition("correct-line4")
-    }if(players[i].lap == 5 ){
-      setPosition("correct-line5")
-    }if(players[i].lap == 6 ){
-      setPosition("correct-line6")
-    }if(players[i].lap == 7 ){
-      setPosition("correct-line7")
-    }if(players[i].lap == 8 ){
-      setPosition("correct-line8")
-    }if(players[i].lap == 9 ){
-      setPosition("correct-line9")
-    }if(players[i].lap == 10 ){
-      setPosition("correct-line2")
-    }else{
-      console.log('well that didnt work')
+  useEffect(()=> {
+      for(let i=0; i<players.length; i++){
+      console.log(players[i])
+      if(players[i].lap == 1 ){
+        setPosition("correct-line1")
+        //callMySound(soundSrc);
+      }if(players[i].lap == 2 ){
+        setPosition("correct-line2")
+      }if(players[i].lap == 3 ){
+        setPosition("correct-line3")
+      }if(players[i].lap == 4 ){
+        setPosition("correct-line4")
+      }if(players[i].lap == 5 ){
+        setPosition("correct-line5")
+      }if(players[i].lap == 6 ){
+        setPosition("correct-line6")
+      }if(players[i].lap == 7 ){
+        setPosition("correct-line7")
+      }if(players[i].lap == 8 ){
+        setPosition("correct-line8")
+      }if(players[i].lap == 9 ){
+        setPosition("correct-line9")
+      }if(players[i].lap == 10 ){
+        setPosition("correct-line2")
+      }else{
+        console.log('well that didnt work')
+      }
+      setPosition("correct-line1");
     }
-  }
-  }
+  },[])
+  
+    //callMySound(soundSrc);
+  
+  
 
-
-  const soundSrc = '../../../public/engine.mp3';
+  /*const soundSrc = '../../../public/engine.mp3';
 
   const callMySound = (src) => {
     const sound= new Howl({
@@ -58,7 +63,7 @@ const Timeline = ({playerId, players, questions, onChange}) => {
       html5: true
     })
     sound.play()
-  }
+  }*/
 
 
   return (
@@ -81,7 +86,7 @@ const Timeline = ({playerId, players, questions, onChange}) => {
                 <label>L10</label>
 
                 <h3>You must answer a question correctly to have enough fuel to drive to the finish line</h3>
-                     <button className="Cbtn" onClick={changePosition}>ACCELERATE</button>
+                     
         </header>
         <Outlet />
             </>

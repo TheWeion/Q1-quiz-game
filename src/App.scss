@@ -1,0 +1,93 @@
+body {
+	overflow: hidden;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.game-container {
+	width: 50vw;
+
+}
+
+.game-container img {
+	max-width: 256px;
+}
+
+
+.wrap{
+	perspective-origin: 50% 50%;
+}
+
+.svg{
+	stroke: red;
+	position:absolute;
+	bottom: -100vh;
+	transform-style: preserve-3d;
+}
+
+$total: 10;
+@for $i from 1 through $total {
+	$scale:random(2) - .4;
+	
+	.svg:nth-child(#{$i}){
+		left:random(120) * 1% - 20;
+		animation: raise#{$i} 6 + random(15) +s linear infinite;
+		animation-delay:random(5) - 5 + s;
+		transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+		z-index: $i - 7;
+		filter: blur($i - 6 + px);
+
+	  @keyframes raise#{$i} {
+		  to{
+			 bottom:150vh;
+			 transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+			}
+		}
+	}
+}
