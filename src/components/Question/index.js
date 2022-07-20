@@ -23,6 +23,11 @@ const Question = ({playerId, players, questions}) => {
     const [foundCorrectAnswer, setFoundCorrectAnswer] = useState(false);
     const [clockRunning, setClockRunning] = useState(false);
 
+    const [player1Position, setPlayer1Position] = useState(0);
+    const [player2Position, setPlayer2Position] = useState(0);
+    const [player3Position, setPlayer3Position] = useState(0);
+    const [player4Position, setPlayer4Position] = useState(0);
+
     const POSITIVE_MESSAGE = `positive`;
     const NEGATIVE_MESSAGE = `negative`;
     const FINISH_MESSAGE = "finish";
@@ -40,6 +45,18 @@ const Question = ({playerId, players, questions}) => {
                 updatePlayerRedux(player);
                 setTime(player.timer);
                 setPenalty(player.penalty);
+                for (let ind = 0; ind < 4; ind++) {
+                    let curPlayer = players[ind];
+                    if (curPlayer.id === 1) {
+                        setPlayer1Position(curPlayer.lap);
+                    } else if (curPlayer.id === 2) {
+                        setPlayer2Position(curPlayer.lap);
+                    } else if (curPlayer.id === 3) {
+                        setPlayer3Position(curPlayer.lap);
+                    } else if (curPlayer.id === 4) {
+                        setPlayer4Position(curPlayer.lap);
+                    }
+                }
             }
             clearInterval(interval);
         }
@@ -133,8 +150,9 @@ const Question = ({playerId, players, questions}) => {
 
     const moveToNextLap = () => {
         let player = targetPlayer;
-        if ((targetPlayer.lap + 1) !== questions.length) {
-            player.lap = player.lap + 1;
+        let nextLap = player.lap + 1;
+        if (nextLap !== questions.length) {
+            player.lap = nextLap;
             updatePlayerRedux(player);
         } else {
             setRadioMessage(getRadioMessage(FINISH_MESSAGE));
@@ -344,7 +362,7 @@ const Question = ({playerId, players, questions}) => {
                     <Radio message={radioMessage} />
                 </div>
                 <div className='wrapper2'>
-                    <Timeline players={players}/>
+                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={5} />
                 </div>
             </div>
             
