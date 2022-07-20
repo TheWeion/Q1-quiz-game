@@ -12,9 +12,20 @@ const Game = () => {
 		<>
 			<Question playerId={1} players={players} questions={questions} />
 			<br />
-			<Timeline playerId={1} players={players} />
 		</>
 	);
 }
 
 export default Game
+
+/*
+<Question  playerId={1} players = {players} questions = {questions}  />
+			<Timeline  playerId={1} players = {players} questions = {questions}/>
+      		<Timer  playerId={1} players = {players}  />
+      		<Radio/>
+
+			{/* <ScoreBoard />
+			<Timer />
+			<QuizRender />
+			<Radio />
+			<RaceTrack /> */
