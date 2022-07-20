@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
 import { useDispatch } from "react-redux";
 import DOMPurify from 'dompurify';
+import Lap from '../Lap';
 import Timer from '../Timer';
 import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
@@ -222,12 +223,7 @@ const Question = ({playerId, players, questions}) => {
         if (curQuestion !== undefined && curQuestion !== null) {
             if (curQuestion !== undefined && curQuestion !== null) {
                 
-                html = `
-                    <div class="row">
-                        <div class="col">
-                            <h1>Lap: ${ (targetPlayer.lap + 1) } / ${ questions.length } </h1>
-                        </div>
-                    </div><br></br>`;
+                html = ``;
                 let list = [];
                 let correct = {};
                 if (!clockRunning) {
@@ -288,6 +284,7 @@ const Question = ({playerId, players, questions}) => {
                         pitClass = `class="btn btn-secondary"`;
                     }
                     html = html + `
+                        <hr></hr>
                         <div class="row">
                             <div class="col">
                                 <div class="row">
@@ -354,7 +351,9 @@ const Question = ({playerId, players, questions}) => {
 
     return (
         <>
-            <h1>Timer: <Timer time={time + penalty} /></h1>
+            <Timer time={time + penalty} /><br></br>
+            <Lap lap={targetPlayer.lap + 1} total={questions.length} /><br></br>
+            <hr></hr>
             <div class="row">
                 <div class="col-10">
                     <div id="question_content"></div>
@@ -362,6 +361,7 @@ const Question = ({playerId, players, questions}) => {
                 <div class="col-2">
                     <Radio message={radioMessage} />
                 </div>
+                <hr></hr>
                 <div className='wrapper2'>
                     <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={questions.length} />
                 </div>
