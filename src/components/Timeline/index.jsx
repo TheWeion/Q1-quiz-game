@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Outlet } from 'react-router-dom';
-
-//import {Howl} from "howler"
+import DOMPurify from 'dompurify';
+import {Howl} from "howler"
 
 import './style.css';
 
@@ -20,7 +20,18 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
   //dynamic values 
   //make each car move separate 
 
-  //callMySound(soundSrc);
+  const soundSrc = ('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a');
+
+  const callMySound = (src) => {
+    const sound= new Howl({
+      src, 
+      html5: true
+    })
+    sound.play()
+  };
+  
+
+  //this useEffect currently only works for the 10 lap I still need to fix the 5 and 15 lap 
 
   useEffect(()=> {
     let player1PositionClass = "progress-line1";
@@ -29,6 +40,8 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
       if (player1 === 0) {
         player1PositionClass = "progress-line1";
       } else {
+        if (player1 === ind) {
+          callMySound(soundSrc);
         player1PositionClass = "correct-line" + ind;
       }
     }
@@ -49,7 +62,24 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
     sound.play()
   }*/
 
-
+  const generateLabel = () => {
+    let html = ``;
+    if(totalLap === 5){
+      for (let ind = 0; ind < totalLap; ind++) {
+        html = html + `<label>L ${ind + 1}</label>`;
+      }
+      }else if(totalLap === 10){
+        for (let ind = 0; ind < totalLap; ind++) {
+          html = html + `<label class='label1'>L ${ind + 1}</label>`;
+        }
+      }else if(totalLap === 15){
+        for (let ind = 0; ind < totalLap; ind++) {
+          html = html + `<label class='label2'>L ${ind + 1}</label>`;
+        }
+      }
+      return <div dangerouslySetInnerHTML={{__html: html}}/>;
+    };
+    
   return (
     <>  
         <header>
