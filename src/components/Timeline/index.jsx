@@ -42,7 +42,8 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
       } else {
         if (player1 === ind) {
           callMySound(soundSrc);
-        player1PositionClass = "correct-line" + ind;
+          player1PositionClass = "correct-line" + ind;
+        }
       }
     }
     setPlayer1Position(player1PositionClass);
