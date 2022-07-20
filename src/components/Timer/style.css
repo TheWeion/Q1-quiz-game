@@ -6,7 +6,7 @@
 .timer{
     font-family: timerFont;
     background-color: black;
-    color: white;
+    color: red;
     display: inline;
     font-weight: bold;
     font-size: 300%;
