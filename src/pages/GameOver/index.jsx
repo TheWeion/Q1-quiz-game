@@ -1,11 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-import Button from 'react-bootstrap/Button';
-import CloseButton from 'react-bootstrap/CloseButton';
-import './styles.css';
-=======
->>>>>>> a73e3ce86cc13113ba71860ea2428e1d3dd269c3
+import 'styles.css';
 
 const GameOver = () => {
 	const navigate = useNavigate();
