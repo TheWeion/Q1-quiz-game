@@ -20,7 +20,6 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
   //dynamic values 
   //make each car move separate 
 
-
   const soundSrc = ('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a');
 
   const callMySound = (src) => {
@@ -46,55 +45,22 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
         player1PositionClass = "correct-line" + ind;
       }
     }
-    }
     setPlayer1Position(player1PositionClass);
   },[player1]);
+  
+    //callMySound(soundSrc);
+  
+  
 
-  useEffect(()=> {
-    let player2PositionClass = "progress-line1";
-    console.log(totalLap);
-    for (let ind = 0; ind < totalLap; ind++) {
-      if (player2 === 0) {
-        player2PositionClass = "progress-line1";
-      } else {
-        if (player2 === ind) {
-        player2PositionClass = "correct-line" + ind;
-      }
-    }
-  }
-    setPlayer2Position(player2PositionClass);
-  },[player2]);
+  /*const soundSrc = '../../../public/engine.mp3';
 
-  useEffect(()=> {
-    let player3PositionClass = "progress-line1";
-    console.log(totalLap);
-    for (let ind = 0; ind < totalLap; ind++) {
-      if (player3 === 0) {
-        player3PositionClass = "progress-line1";
-      } else {
-        if (player3 === ind) {
-        player3PositionClass = "correct-line" + ind;
-      }
-    }
-  }
-    setPlayer3Position(player3PositionClass);
-  },[player3]);
-
-  useEffect(()=> {
-    let player4PositionClass = "progress-line1";
-    console.log(totalLap);
-    for (let ind = 0; ind < totalLap; ind++) {
-      if (player4 === 0) {
-        player4PositionClass = "progress-line1";
-      } else {
-        if (player1 === ind) {
-        player4PositionClass = "correct-line" + ind;
-      }
-    }
-  }
-    setPlayer4Position(player4PositionClass);
-  },[player4]);
-
+  const callMySound = (src) => {
+    const sound= new Howl({
+      src, 
+      html5: true
+    })
+    sound.play()
+  }*/
 
   const generateLabel = () => {
     let html = ``;
@@ -123,9 +89,19 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
             <div className={player3Position}></div>
             <div className={player4Position}></div>
           </div>
-          <div className='label-wrap'>
-          { generateLabel() }       
-          </div>    
+                <label>L1</label>
+                <label>L2</label>
+                <label>L3</label>
+                <label>L4</label>
+                <label>L5</label>
+                <label>L6</label>
+                <label>L7</label>
+                <label>L8</label>
+                <label>L9</label>
+                <label>L10</label>
+
+                <h3>You must answer a question correctly to have enough fuel to drive to the finish line</h3>
+                     
         </header>
         <Outlet />
     </>
@@ -143,5 +119,3 @@ export default Timeline;
 //for(let i=0; i<questions.length; i++){
   console.log(questions[i])
   if(questions[i].correct_answer ==  ){*/
-
-  //I might generate the cars and then loop through the css the same way the label has been generated maybe 

@@ -1,10 +1,10 @@
 import React from 'react';
-import './styles.css'
+
 const Rules = () => {
 	return (
 	<>
-		<h1 classname="title">Rules</h1>
-		<ul className="rules">
+		<h1>Rules</h1>
+		<ul>
 			<li>Each correct answer completes 1 lap</li>
 			<li>Each wrong attempt incurs a 5 second penalty.</li>
 			<li>You can open the DRS once - allowing you to skip 1 question.</li>

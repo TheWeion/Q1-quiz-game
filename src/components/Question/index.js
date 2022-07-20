@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
 import { useDispatch } from "react-redux";
+
 import DOMPurify from 'dompurify';
 import Lap from '../Lap';
+
 import Timer from '../Timer';
 import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
@@ -349,7 +351,7 @@ const Question = ({playerId, players, questions}) => {
                 }
                 const questionDiv = document.getElementById("question_content");
                 if (questionDiv !== undefined && questionDiv != null) {
-                    questionDiv.innerHTML = DOMPurify.sanitize(html);
+                    questionDiv.innerHTML = html;
                 }
                 const startButton = document.getElementById("start_button");
                 if (startButton !== undefined && startButton !== null) {
@@ -403,7 +405,7 @@ const Question = ({playerId, players, questions}) => {
                 </div>
                 <hr></hr>
                 <div className='wrapper2'>
-                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={questions.length} />
+                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={5} />
                 </div>
             </div>
             
