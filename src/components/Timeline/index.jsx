@@ -142,3 +142,5 @@ export default Timeline;
 //for(let i=0; i<questions.length; i++){
   console.log(questions[i])
   if(questions[i].correct_answer ==  ){*/
+
+  //I might generate the cars and then loop through the css the same way the label has been generated maybe 
