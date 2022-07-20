@@ -97,11 +97,24 @@
      margin-left: 870px;
      content: url(../../../public/TestCar.png);
 }
+
+
 label{
-    display: inline-block;
-    padding: 5px;
-    padding-left: 75px;
     font-family: 'Racing Sans One';
+    padding-left: 150px;
+}
+
+.label1{
+    padding-left: 70px;
+}
+
+.label2{
+    padding-left: 40px;
+}
+
+.label-wrap{
+    display: flex;
+    flex-direction: row;
 }
 
 .Cbtn{

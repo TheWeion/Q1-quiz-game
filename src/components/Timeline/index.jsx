@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Outlet } from 'react-router-dom';
-
+import DOMPurify from 'dompurify';
 //import {Howl} from "howler"
 
 import './style.css';
@@ -20,7 +20,17 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
   //dynamic values 
   //make each car move separate 
 
-  //callMySound(soundSrc);
+
+  //const soundSrc = ('../../../public/engine.mp3');
+
+  /*const callMySound = (src) => {
+    const sound= new Howl({
+      src, 
+      html5: true
+    })
+    sound.play()
+  };
+  */
 
   useEffect(()=> {
     let player1PositionClass = "progress-line1";
@@ -30,6 +40,7 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
         player1PositionClass = "progress-line1";
       } else {
         if (player1 === ind) {
+         // callMySound(soundSrc);
         player1PositionClass = "correct-line" + ind;
       }
     }
@@ -81,21 +92,26 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
   }
     setPlayer4Position(player4PositionClass);
   },[player4]);
-  
-    //callMySound(soundSrc);
-  
-  
 
-  /*const soundSrc = '../../../public/engine.mp3';
 
-  const callMySound = (src) => {
-    const sound= new Howl({
-      src, 
-      html5: true
-    })
-    sound.play()
-  }*/
-
+  const generateLabel = () => {
+    let html = ``;
+    if(totalLap == 5){
+      for (let ind = 0; ind < totalLap; ind++) {
+        html = html + `<label>L ${ind + 1}</label>`;
+      }
+      }else if(totalLap == 10){
+        for (let ind = 0; ind < totalLap; ind++) {
+          html = html + `<label class='label1'>L ${ind + 1}</label>`;
+        }
+      }else if(totalLap == 15){
+        for (let ind = 0; ind < totalLap; ind++) {
+          html = html + `<label class='label2'>L ${ind + 1}</label>`;
+        }
+      }
+      return <div dangerouslySetInnerHTML={{__html: html}}/>;
+    };
+    
 
   return (
     <>  
@@ -106,17 +122,9 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
             <div className={player3Position}></div>
             <div className={player4Position}></div>
           </div>
-                <label>L1</label>
-                <label>L2</label>
-                <label>L3</label>
-                <label>L4</label>
-                <label>L5</label>
-                <label>L6</label>
-                <label>L7</label>
-                <label>L8</label>
-                <label>L9</label>
-                <label>L10</label>
-                     
+          <div className='label-wrap'>
+          { generateLabel() }       
+          </div>    
         </header>
         <Outlet />
     </>
