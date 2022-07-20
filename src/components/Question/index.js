@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
 import { useDispatch } from "react-redux";
+import DOMPurify from 'dompurify';
 import Timer from '../Timer';
 import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
@@ -311,7 +312,7 @@ const Question = ({playerId, players, questions}) => {
                 }
                 const questionDiv = document.getElementById("question_content");
                 if (questionDiv !== undefined && questionDiv != null) {
-                    questionDiv.innerHTML = html;
+                    questionDiv.innerHTML = DOMPurify.sanitize(html);
                 }
                 const startButton = document.getElementById("start_button");
                 if (startButton !== undefined && startButton !== null) {
