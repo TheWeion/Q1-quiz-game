@@ -16,13 +16,15 @@ const Question = ({playerId, players, questions}) => {
 
     const navigate = useNavigate();
 
-    const targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
+    let targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
 
     const [time, setTime] = useState(0); // Total time elapsed
     const [penalty, setPenalty] = useState(0); // Total penalty time
+    const [lap, setLap] = useState(0);
     const [radioMessage, setRadioMessage] = useState(`"Ready?"`);
     const [startPress, setStartPress] = useState(false);
     const [foundCorrectAnswer, setFoundCorrectAnswer] = useState(false);
+    const [gameFinish, setGameFinish] = useState(false);
     const [clockRunning, setClockRunning] = useState(false);
 
     const [player1Position, setPlayer1Position] = useState(0);
@@ -33,6 +35,40 @@ const Question = ({playerId, players, questions}) => {
     const POSITIVE_MESSAGE = `positive`;
     const NEGATIVE_MESSAGE = `negative`;
     const FINISH_MESSAGE = "finish";
+
+    useEffect(() => {
+        resetValues().then(()=>{
+            console.log(`Reset`);
+        });
+    }, []);
+
+    const resetValues = () => {
+        return new Promise((resolve, reject) => {
+            // Reset variables
+            setTime(0);
+            setPenalty(0);
+            setLap(0);
+            setRadioMessage(`"Ready?"`);
+            setStartPress(false);
+            setFoundCorrectAnswer(false);
+            setGameFinish(false);
+            setClockRunning(false);
+            setPlayer1Position(0);
+            setPlayer2Position(0);
+            setPlayer3Position(0);
+            setPlayer4Position(0);
+            players.map((cur)=>{
+                cur.lap = 0;
+                cur.timer = 0;
+                cur.penalty = 0;
+                cur.drs_used = false;
+                cur.pit_entered = false;
+                cur.is_bot = false;
+            });
+            targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
+            resolve();
+        });
+    };
 
     useEffect(() => {
         let interval;
@@ -155,8 +191,10 @@ const Question = ({playerId, players, questions}) => {
         let nextLap = player.lap + 1;
         if (nextLap !== questions.length) {
             player.lap = nextLap;
+            setLap(nextLap);
             updatePlayerRedux(player);
         } else {
+            setGameFinish(true);
             setRadioMessage(getRadioMessage(FINISH_MESSAGE));
             wait(3).then(()=>{
                 navigate('/gameover');
@@ -227,13 +265,15 @@ const Question = ({playerId, players, questions}) => {
                 let list = [];
                 let correct = {};
                 if (!clockRunning) {
-                    html = html + `
+                    if (!gameFinish) {
+                        html = html + `
                         <div class="row">
                             <div class="col">
                                 <h2>Ready?</h2>
                                 <button id="start_button" class="btn btn-primary">I'm ready</button>
                             </div>
                         </div>`;
+                    }
                 } else {
                     html = html + `
                         <div class="row">
@@ -352,7 +392,7 @@ const Question = ({playerId, players, questions}) => {
     return (
         <>
             <Timer time={time + penalty} /><br></br>
-            <Lap lap={targetPlayer.lap + 1} total={questions.length} /><br></br>
+            <Lap lap={lap + 1} total={questions.length} /><br></br>
             <hr></hr>
             <div class="row">
                 <div class="col-10">
