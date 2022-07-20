@@ -37,6 +37,6 @@ const UserScores = [
     }
 ]
 
-const HighestToLowest = [...UserScores].sort((a,b)=>b.score-a.score)
+// const HighestToLowest = [...UserScores].sort((a,b)=>b.score-a.score)
 
-export default HighestToLowest;
+export default UserScores;
