@@ -1,0 +1,25 @@
+.images{
+    content: url('../../../public/SingleDriver.png');
+    width: 100px;
+    height: 250px;
+    float:left;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.image2{
+    content: url('../../../public/MultiPlayer.png');
+    width: 150px;
+    height: 250px;
+    padding-bottom: 20px;
+    float:right;
+}
+
+.btnc{
+    float: right;
+}
+
+.title{
+    text-align: center;
+    color: red;
+}
