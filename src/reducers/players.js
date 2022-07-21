@@ -20,7 +20,7 @@ const playerList = [
         "drs_used": false,
         "pit_entered": false,
         "finish": false,
-        "is_bot": false
+        "is_ready": false
     },
     {
         "id": 2,
@@ -32,7 +32,7 @@ const playerList = [
         "drs_used": false,
         "pit_entered": false,
         "finish": false,
-        "is_bot": false
+        "is_ready": false
     },
     {
         "id": 3,
@@ -44,7 +44,7 @@ const playerList = [
         "drs_used": false,
         "pit_entered": false,
         "finish": false,
-        "is_bot": false
+        "is_ready": false
     },
     {
         "id": 4,
@@ -56,7 +56,7 @@ const playerList = [
         "drs_used": false,
         "pit_entered": false,
         "finish": false,
-        "is_bot": false
+        "is_ready": false
     }
 ];
 
@@ -81,7 +81,7 @@ const playersReducer = (state = [], action) => {
                 "drs_used": false,
                 "pit_entered": false,
                 "finish": false,
-                "is_bot": false
+                "is_ready": false
             };
             return state;
             case "CREATE_MULTI_PLAY":
