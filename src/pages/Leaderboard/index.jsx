@@ -4,6 +4,7 @@ import { updatePlayer } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Profiles } from '../../components';
 import Button from 'react-bootstrap/Button';
+import './styles.css';
 
 const Leaderboard = () => {
 	const dispatch = useDispatch();

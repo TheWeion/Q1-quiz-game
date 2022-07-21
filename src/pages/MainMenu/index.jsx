@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuForm from '../../components/MenuForm';
+import './styles.css';
 
 const MainMenu = () => {
 	  return (
