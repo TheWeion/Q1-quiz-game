@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { updatePlayer } from "../../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import DOMPurify from 'dompurify';
 import Lap from '../Lap';
@@ -9,14 +9,15 @@ import Lap from '../Lap';
 import Timer from '../Timer';
 import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
-import './style.css'
+import './style.css';
 import Timeline from '../Timeline';
 
-const Question = ({playerId, players, questions}) => {
+const Question = ({playerId}) => {
     const dispatch = useDispatch();
-
-
     const navigate = useNavigate();
+
+    const players = useSelector(state => state.playersReducer);
+    const questions = useSelector(state => state.questionsReducer);
 
     let targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
 
@@ -26,13 +27,7 @@ const Question = ({playerId, players, questions}) => {
     const [radioMessage, setRadioMessage] = useState(`"Ready?"`);
     const [startPress, setStartPress] = useState(false);
     const [foundCorrectAnswer, setFoundCorrectAnswer] = useState(false);
-    const [gameFinish, setGameFinish] = useState(false);
     const [clockRunning, setClockRunning] = useState(false);
-
-    const [player1Position, setPlayer1Position] = useState(0);
-    const [player2Position, setPlayer2Position] = useState(0);
-    const [player3Position, setPlayer3Position] = useState(0);
-    const [player4Position, setPlayer4Position] = useState(0);
 
     const POSITIVE_MESSAGE = `positive`;
     const NEGATIVE_MESSAGE = `negative`;
@@ -53,21 +48,16 @@ const Question = ({playerId, players, questions}) => {
             setRadioMessage(`"Ready?"`);
             setStartPress(false);
             setFoundCorrectAnswer(false);
-            setGameFinish(false);
             setClockRunning(false);
-            setPlayer1Position(0);
-            setPlayer2Position(0);
-            setPlayer3Position(0);
-            setPlayer4Position(0);
-            players.map((cur)=>{
-                cur.lap = 0;
-                cur.timer = 0;
-                cur.penalty = 0;
-                cur.drs_used = false;
-                cur.pit_entered = false;
-                cur.is_bot = false;
-            });
-            targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
+            let player = targetPlayer;
+            player.lap = 0;
+            player.timer = 0;
+            player.penalty = 0;
+            player.drs_used = false;
+            player.pit_entered = false;
+            player.finish = false;
+            player.is_bot = false;
+            updatePlayerRedux(player);
             resolve();
         });
     };
@@ -85,18 +75,6 @@ const Question = ({playerId, players, questions}) => {
                 updatePlayerRedux(player);
                 setTime(player.timer);
                 setPenalty(player.penalty);
-                for (let ind = 0; ind < 4; ind++) {
-                    let curPlayer = players[ind];
-                    if (curPlayer.id === 1) {
-                        setPlayer1Position(curPlayer.lap);
-                    } else if (curPlayer.id === 2) {
-                        setPlayer2Position(curPlayer.lap);
-                    } else if (curPlayer.id === 3) {
-                        setPlayer3Position(curPlayer.lap);
-                    } else if (curPlayer.id === 4) {
-                        setPlayer4Position(curPlayer.lap);
-                    }
-                }
             }
             clearInterval(interval);
         }
@@ -196,7 +174,8 @@ const Question = ({playerId, players, questions}) => {
             setLap(nextLap);
             updatePlayerRedux(player);
         } else {
-            setGameFinish(true);
+            player.finish = true;
+            updatePlayerRedux(player);
             setRadioMessage(getRadioMessage(FINISH_MESSAGE));
             wait(3).then(()=>{
                 navigate('/gameover');
@@ -267,7 +246,7 @@ const Question = ({playerId, players, questions}) => {
                 let list = [];
                 let correct = {};
                 if (!clockRunning) {
-                    if (!gameFinish) {
+                    if (!targetPlayer.finish) {
                         html = html + `
                         <div class="row">
                             <div class="col">
@@ -351,7 +330,7 @@ const Question = ({playerId, players, questions}) => {
                 }
                 const questionDiv = document.getElementById("question_content");
                 if (questionDiv !== undefined && questionDiv != null) {
-                    questionDiv.innerHTML = html;
+                    questionDiv.innerHTML = DOMPurify.sanitize(html);
                 }
                 const startButton = document.getElementById("start_button");
                 if (startButton !== undefined && startButton !== null) {
@@ -394,7 +373,7 @@ const Question = ({playerId, players, questions}) => {
     return (
         <>
             <Timer time={time + penalty} /><br></br>
-            <Lap lap={lap + 1} total={questions.length} finish={gameFinish} /><br></br>
+            <Lap lap={lap + 1} total={questions.length} finish={targetPlayer.finish} /><br></br>
             <hr></hr>
             <div class="row">
                 <div class="col-10">
@@ -405,11 +384,9 @@ const Question = ({playerId, players, questions}) => {
                 </div>
                 <hr></hr>
                 <div className='wrapper2'>
-                    <Timeline player1={player1Position} player2={player2Position} player3={player3Position} player4={player4Position} totalLap={questions.length} />
+                    <Timeline players={players} totalLap={questions.length} />
                 </div>
             </div>
-            
-            
         </>
     );
 };

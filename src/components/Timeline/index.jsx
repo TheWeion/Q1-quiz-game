@@ -7,7 +7,7 @@ import './style.css';
 
 
 
-const Timeline = ({player1, player2, player3, player4, totalLap}) => {
+const Timeline = ({players, totalLap}) => {
 
   /*const [player1Position, setPlayer1Position] = useState("progress-line1"); 
   const [player2Position, setPlayer2Position] = useState("progress-line1");
@@ -63,25 +63,39 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
     sound.play()
   }*/
 
-  const generateCar = (lap) => {
+  const generateCar = (curPlayer) => {
+    let lap = curPlayer.lap;
+    let finish = curPlayer.finish;
     let html = `
       <div class='row'>`;
     for (let ind = 0; ind < totalLap; ind++) {
-      if (ind === lap) {
-        html = html + `<div class='col'><img src='./TestCar.png' style='width: 55px;' /></div>`;
-      } else {
+      if (finish) {
         html = html + `<div class='col'></div>`;
+      } else {
+        if (ind === lap) {
+          html = html + `<div class='col'><img src='./TestCar.png' style='width: 55px;' /></div>`;
+        } else {
+          html = html + `<div class='col'></div>`;
+        }
       }
     }
-    html = html + `</div>`
+    if (finish) {
+      html = html + `<div class='col'><img src='./TestCar.png' style='width: 55px;' /></div>`;
+    } else {
+      html = html + `<div class='col'></div>`;
+    }
+    html = html + `</div>`;
     return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
   };
   
   const generateLabel = () => {
-    let html = ``;
+    let html = `
+      <div class='row'>`;
     for (let ind = 0; ind < totalLap; ind++) {
-      html = html + `<label style='width: ${ (1/totalLap)*100}%; padding-left: 5px;'>L ${ind + 1}</label>`;
+      html = html + `<div class='col'>L ${ind + 1}</div>`;
     }
+    html = html + `<div class='col'>FIN</div>`;
+    html = html + `</div>`;
     return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
   };
     
@@ -89,10 +103,10 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
     <>  
         <header>
           <div className='container1'>
-            { generateCar(player1) }
-            { generateCar(player2) }
-            { generateCar(player3) }
-            { generateCar(player4) }
+            { generateCar(players[0]) }
+            { generateCar(players[1]) }
+            { generateCar(players[2]) }
+            { generateCar(players[3]) }
           </div>
           { generateLabel() }                     
         </header>

@@ -3,7 +3,7 @@ import './style.css';
 import DOMPurify from 'dompurify';
 
 const Lap = ({lap, total, finish}) => {
-  const renderHTML = (lap, total, finish) => {
+  const renderHTML = () => {
     let html = ``;
     if (finish) {
       html = `<div class="lap-label">Lap:</div><div class="lap"><span>FINISH</span></div>`;
@@ -15,7 +15,7 @@ const Lap = ({lap, total, finish}) => {
 
   return (
     <>
-      { renderHTML(lap, total, finish) }
+      { renderHTML() }
     </>
   );
 };
