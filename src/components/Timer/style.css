@@ -3,13 +3,20 @@
     src: local('E1234.ttf'), url('../../font/E1234.ttf') format('truetype');
 }
 
-.timer{
+.timer {
+    border-radius: 10px;
     font-family: timerFont;
     background-color: black;
     color: red;
     display: inline;
     font-weight: bold;
     font-size: 300%;
+    padding: 3px;
+}
+
+.numbers{
+   float: left;
+
 }
 
 .timer-label {

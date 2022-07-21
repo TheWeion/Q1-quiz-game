@@ -19,6 +19,7 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
+        "finish": false,
         "is_bot": false
     },
     {
@@ -30,6 +31,7 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
+        "finish": false,
         "is_bot": false
     },
     {
@@ -41,6 +43,7 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
+        "finish": false,
         "is_bot": false
     },
     {
@@ -52,6 +55,7 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
+        "finish": false,
         "is_bot": false
     }
 ];
