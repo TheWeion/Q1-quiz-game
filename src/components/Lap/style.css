@@ -3,13 +3,15 @@
     src: local('E1234.ttf'), url('../../font/E1234.ttf') format('truetype');
 }
 
-.lap{
+.lap {
+    border-radius: 10px;
     font-family: timerFont;
     background-color: black;
     color: red;
     display: inline;
     font-weight: bold;
     font-size: 300%;
+    padding: 3px;
 }
 
 .lap-label {

@@ -33,13 +33,16 @@ const GameNav = () => {
 			isNextVisible = false;
 			break;
 		case '/gameover':
+			isBackVisible = false;
 			isNextVisible = true;
-			navLoc = '/';
-			navText = 'See you on the Road!';
+			navLoc = '/leaderboard';
+			navText = 'Leaderboard';
 			break;
 		case '/leaderboard':
-			navLoc = '/';
-			navText = 'Back to the Main Menu.';
+			isBackVisible = true;
+			isNextVisible = false;
+			//navLoc = '/';
+			//navText = 'Main Menu';
 			break;
 		default:
 			isBackVisible = true;
@@ -58,8 +61,8 @@ const GameNav = () => {
 
 	return (
 		<>
-			{ isNextVisible ? <Button id="nav-next" onClick={handleClick}>{navText}</Button> : null }
 			{ isBackVisible ? <Button id="nav-back" variant="danger" onClick={handleBack}>Back</Button> : null	}
+			{ isNextVisible ? <Button id="nav-next" onClick={handleClick}>{navText}</Button> : null }
 		</>
   );
 }
