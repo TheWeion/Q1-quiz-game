@@ -3,7 +3,7 @@ import './styles.css'
 const Rules = () => {
 	return (
 	<>
-		<h1 classname="title">Rules</h1>
+		<h1 className="title">Rules</h1>
 		<ul className="rules">
 			<li>Each correct answer completes 1 lap</li>
 			<li>Each wrong attempt incurs a 5 second penalty.</li>
