@@ -11,9 +11,8 @@ const GameNav = () => {
 
 	switch (window.location.pathname) {
 		case '/':
-			navLoc = '/intro';
-			navText = 'Join';
 			isBackVisible = false;
+			isNextVisible = false;
 			break;
 		case '/intro':
 			navLoc = '/settings';
