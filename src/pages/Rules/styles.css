@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+
+*{ 
+    font-family: 'Racing Sans One';
+}
+
+.flag{
+  background-image: url('../../../public/flag.png');
+  width: 700px;
+  height: 400px;
+  font-size: 16pt;
+}
+
+.center1{
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+}
+

@@ -17,7 +17,7 @@ const GameOver = () => {
 	
 	return (
 		<>
-			<img className='podium2'></img>
+		<div className="podium2"></div>
 		</>
 	);
 }

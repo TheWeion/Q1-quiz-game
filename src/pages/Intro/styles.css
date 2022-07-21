@@ -3,3 +3,20 @@
 *{ 
     font-family: 'Racing Sans One';
 }
+
+.newImage{
+    content: url('../../../public/driverpov.jpg');
+    width:700px;
+    height:300px;
+}
+
+.centering{
+    text-align: center;
+    /*figure out a way to align the headings to center on the pages*/
+}
+
+.enlarge{
+    font-size:18pt;
+    text-align: center;
+}
+

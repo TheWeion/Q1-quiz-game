@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createSinglePlay } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import DOMPurify from 'dompurify';
+import './styles.css';
 
 const MenuForm = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const MenuForm = () => {
         <div className="col"><label>Join room: </label><input type="text" id="pin" name="pin" placeHolder="PIN"></input><button id="join_multi_play_button" class="btn btn-primary">Join</button></div>
       </div>`;
     const singlePlayButton = document.getElementById("single_play_button");
-    singlePlayButton.className = "btn btn-secondary";
+    singlePlayButton.className = "btn btnb btn-secondary";
     const multiPlayButton = document.getElementById("multi_play_button");
     multiPlayButton.className = "btn btn-primary";
     const intputFormDiv = document.getElementById("input_form");
@@ -93,7 +94,9 @@ const MenuForm = () => {
       <div className="card card-body">
         <div className="row">
           <div className="col">
-            <button id="single_play_button" className="btn btn-secondary" onClick={handleSinglePlay}>Single Play</button>
+            <div className='images'></div>
+            <div className='image2'></div>
+            <button id="single_play_button" className="btn btnb btn-secondary" onClick={handleSinglePlay}>Single Play</button>
             <button id="multi_play_button" className="btn btn-secondary" onClick={handleMultiPlay}>Multi Play</button>
           </div>
         </div>
