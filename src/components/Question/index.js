@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import DOMPurify from 'dompurify';
 import Lap from '../Lap';
-
 import Timer from '../Timer';
 import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
