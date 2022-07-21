@@ -103,10 +103,7 @@ const Timeline = ({players, totalLap}) => {
     <>  
         <header>
           <div className='container1'>
-            { generateCar(players[0]) }
-            { generateCar(players[1]) }
-            { generateCar(players[2]) }
-            { generateCar(players[3]) }
+            { players.map((cur)=>generateCar(cur)) }
           </div>
           { generateLabel() }                     
         </header>

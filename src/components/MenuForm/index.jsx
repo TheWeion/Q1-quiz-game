@@ -1,13 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createSinglePlay } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 import DOMPurify from 'dompurify';
 
 const MenuForm = () => {
+  const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const players = useSelector(state => state.playersReducer);
 
   const handleSinglePlay = () => {
     let html = ``;
     html = html + `
       <div className="row">
-        <div className="col"><label for="userName">User Name</label><input type="text" id="userName" name="userName"></input><button id="join_single_play_button" class="btn btn-primary">Join</button></div>
+        <div className="col"><label for="playerName">Player Name</label><input type="text" id="playerName" name="playerName"></input><button id="join_single_play_button" class="btn btn-primary">Join</button></div>
       </div>`;
     const singlePlayButton = document.getElementById("single_play_button");
     singlePlayButton.className = "btn btn-primary";
@@ -20,11 +26,12 @@ const MenuForm = () => {
     const joinSinglePlayButton = document.getElementById("join_single_play_button");
     if (joinSinglePlayButton !== undefined && joinSinglePlayButton !== null) {
       joinSinglePlayButton.addEventListener('click', ()=>{
-        const joinUsername = document.getElementById("userName").value;
-        if (joinUsername !== undefined && joinUsername !== null && joinUsername !== "") {
-          console.log('join single play: ' + joinUsername);
+        const joinPlayerName = document.getElementById("playerName").value;
+        if (joinPlayerName !== undefined && joinPlayerName !== null && joinPlayerName !== "") {
+          dispatch(createSinglePlay(joinPlayerName));
+          navigate('/intro');
         } else {
-          alert('Please enter username');
+          alert('Please enter player name');
         }
       });
     }
@@ -34,7 +41,7 @@ const MenuForm = () => {
     let html = ``;
     html = html + `
       <div className="row">
-        <div className="col-8"><label for="userName">User Name</label><input type="text" id="userName" name="userName" ></input></div>
+        <div className="col-8"><label for="playerName">User Name</label><input type="text" id="playerName" name="playerName" ></input></div>
       </div>
       <hr></hr>
       <div className="row">
@@ -55,19 +62,19 @@ const MenuForm = () => {
     const createNewRoomButton = document.getElementById("create_new_room_button");
     if (createNewRoomButton !== undefined && createNewRoomButton !== null) {
       createNewRoomButton.addEventListener('click', ()=>{
-        const joinUsername = document.getElementById("userName").value;
-        if (joinUsername !== undefined && joinUsername !== null && joinUsername !== "") {
-          console.log('create new room: ' + joinUsername);
+        const joinPlayerName = document.getElementById("playerName").value;
+        if (joinPlayerName !== undefined && joinPlayerName !== null && joinPlayerName !== "") {
+          console.log('create new room: ' + joinPlayerName);
         } else {
-          alert('Please enter username');
+          alert('Please enter player name');
         }
       });
     }
     const joinMultiPlayButton = document.getElementById("join_multi_play_button");
     if (joinMultiPlayButton !== undefined && joinMultiPlayButton !== null) {
       joinMultiPlayButton.addEventListener('click', ()=>{
-        const joinUsername = document.getElementById("userName").value;
-        if (joinUsername !== undefined && joinUsername !== null && joinUsername !== "") {
+        const joinPlayerName = document.getElementById("playerName").value;
+        if (joinPlayerName !== undefined && joinPlayerName !== null && joinPlayerName !== "") {
           const joinPin = document.getElementById("pin").value;
           if (joinPin !== undefined && joinPin !== null && joinPin !== "") {
             console.log('join multi play: ' + joinPin);
@@ -75,7 +82,7 @@ const MenuForm = () => {
             alert('Please enter PIN');
           }
         } else {
-          alert('Please enter username');
+          alert('Please enter player name');
         }
       });
     }
