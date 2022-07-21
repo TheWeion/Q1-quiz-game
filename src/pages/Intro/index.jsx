@@ -5,8 +5,9 @@ const Intro = () => {
 
 	return (
 	<>
-		<h1>Introduction</h1>
-		<p>Answer as quickly as you can to cross the finish line!</p>
+		<h1 className="centering">Introduction</h1>
+		<div className='newImage'></div>
+		<p className='enlarge'>Answer as quickly as you can to cross the finish line!</p>
 	</>
   );
 };

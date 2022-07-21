@@ -4,6 +4,8 @@ import './styles.css';
 const Rules = () => {
 	return (
 	<>
+	<div className="flag">
+		<div className='center1'>
 		<h1>Rules</h1>
 		<ul>
 			<li>Each correct answer completes 1 lap</li>
@@ -16,6 +18,8 @@ const Rules = () => {
 			<li>3rd Place - Will earn you 15 additional points</li>
 			<li>4th Place - Will earn you 10 additional points</li>
 		</ul>
+		</div>
+		</div>
 	</>
   );
 };
