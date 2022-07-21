@@ -1,13 +1,16 @@
 import React from 'react'
-import HighestToLowest from '../Database';
+import UserScores from '../Database';
+import './style.css';
 
 const Profiles = () => {
+    const HighestToLowest = [...UserScores].sort((a,b)=>b.score-a.score)
+
     return (
-        <div className='users'>
+        <div className='user-container'>
             {HighestToLowest.map((user, index) => (
-                <div key={index}>
-                    <p>{user.name}</p>
-                    <p>{user.score}</p>                  
+                <div className='users' key={index}>
+                    <p className='name1'>{user.name}</p>
+                    <p className='score1'>{user.score}</p>                  
                 </div>          
             ))}
         </div>

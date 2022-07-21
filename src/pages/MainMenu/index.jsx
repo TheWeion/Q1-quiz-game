@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import MenuForm from '../../components/MenuForm';
+import './styles.css';
 
 const MainMenu = () => {
 	  return (
 		<>
-				<img src={logo} className="App-logo" alt="logo" />
 				<div className="main-menu" >
 					<div className="frm-menu-container">
-						{/* <MenuForm /> */}
+						<MenuForm />
 					</div>
 				</div>
 		</>

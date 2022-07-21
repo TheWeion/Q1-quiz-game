@@ -3,6 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import CloseButton from 'react-bootstrap/CloseButton';
 import { useNavigate } from 'react-router-dom';
+import './styles.css';
 
 
 const ExitNav = () => {
@@ -20,8 +21,10 @@ const ExitNav = () => {
 	}
 
 	return (
-		<>
+		<>	
 			<CloseButton id="nav-exit" onClick={ExitHandler} />
+			<div className="logoo"></div>
+			<h1 className='banner'>Q1 Quiz</h1>
 			<Alert variant="warning" show={show}>
 				<Alert.Heading>Are you sure you want to exit?</Alert.Heading>
 				<p>This will end your online session, are you sure?</p>

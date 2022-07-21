@@ -11,9 +11,8 @@ const GameNav = () => {
 
 	switch (window.location.pathname) {
 		case '/':
-			navLoc = '/intro';
-			navText = 'Join';
 			isBackVisible = false;
+			isNextVisible = false;
 			break;
 		case '/intro':
 			navLoc = '/settings';
@@ -35,11 +34,14 @@ const GameNav = () => {
 		case '/gameover':
 			isBackVisible = false;
 			isNextVisible = true;
-			navLoc = '/';
-			navText = 'See you on the Road!';
+			navLoc = '/leaderboard';
+			navText = 'Leaderboard';
+			break;
 		case '/leaderboard':
-			navLoc = '/';
-			navText = 'Back to the Main Menu.';
+			isBackVisible = true;
+			isNextVisible = false;
+			//navLoc = '/';
+			//navText = 'Main Menu';
 			break;
 		default:
 			isBackVisible = true;
@@ -58,8 +60,8 @@ const GameNav = () => {
 
 	return (
 		<>
-			{ isNextVisible ? <Button id="nav-next" onClick={handleClick}>{navText}</Button> : null }
 			{ isBackVisible ? <Button id="nav-back" variant="danger" onClick={handleBack}>Back</Button> : null	}
+			{ isNextVisible ? <Button id="nav-next" onClick={handleClick}>{navText}</Button> : null }
 		</>
   );
 }

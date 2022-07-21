@@ -11,3 +11,17 @@ export const updatePlayer = (player) => {
         payload: player
     }
 };
+
+export const createSinglePlay = (playerName) => {
+    return {
+        type: "CREATE_SINGLE_PLAY",
+        payload: playerName
+    }
+};
+
+export const createMultiPlay = () => {
+    return {
+        type: "CREATE_MULTI_PLAY",
+        payload: null
+    }
+};

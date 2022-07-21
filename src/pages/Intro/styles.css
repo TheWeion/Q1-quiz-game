@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+
+*{ 
+    font-family: 'Racing Sans One';
+}
+
+.newImage{
+    content: url('../../../public/driverpov.jpg');
+    width: 100%;
+    height:400px;
+}
+
+.centering{
+    text-align: center;
+    /*figure out a way to align the headings to center on the pages*/
+}
+
+.enlarge{
+    font-size:18pt;
+    text-align: center;
+}
+

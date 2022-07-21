@@ -1,13 +1,17 @@
-import { default as MainMenu } from '.';
-import { render, screen } from '@testing-library/react';
+/*** @jest-environment jsdom*/
+import React from 'react';
+import {screen, render} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import MainMenu from '.';
 
-beforeEach(() => {
-	render(<MainMenu />);
-});
+describe('Main Menu', () => {
+    beforeEach(()=>{
+        render(<MainMenu />)
+    })
 
-describe('MainMenu', () => {
-	it('renders correctly', () => {;
-		const img = screen.getByRole('img');
-		expect(img.getAttribute('src')).toBe('logo.svg');
-	});
+
+    test('img must have an alt="intro',() => {
+        const img = screen.getByRole('img');
+        expect(img).toHaveAttribute('alt', 'logo')
+    })
 })

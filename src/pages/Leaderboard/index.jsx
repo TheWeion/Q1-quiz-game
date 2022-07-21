@@ -1,12 +1,27 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createMultiPlay } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 import { Profiles } from '../../components';
+import Button from 'react-bootstrap/Button';
+import './styles.css';
 
 const Leaderboard = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const players = useSelector(state => state.playersReducer);
+
+	const handleClick = () => {
+		// Reset all data in players
+		dispatch(createMultiPlay());
+		navigate('/');
+	};
+
 	return (
 		<>
-			<h1>Leaderboard</h1>
+			<h1 className='leaderBoard'>Leaderboard</h1>
 			<Profiles />
-			{/* <LeaderboardRender /> */}
+			<Button onClick={handleClick}>Main Menu</Button>
 		</>
 	);
 }

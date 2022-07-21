@@ -1,14 +1,19 @@
+/*** @jest-environment jsdom*/
 import React from 'react';
-import { default as Leaderboard } from '.';
-import { render, screen } from '@testing-library/react';
+import {screen, render} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import Leaderboard from '.';
+import { Provider } from 'react-redux';
 
-beforeEach(() => {
-	render(<Leaderboard />);
-});
+describe('Intro', () => {
+    beforeEach(()=>{
+        render(<Provider>
+                <Leaderboard />
+            </Provider>)
+    })
 
-describe('Leaderboard', () => {
-	it('renders correctly', () => {
-		const heading = screen.getByRole('heading');
-		expect(heading.textContent).toBe('Leaderboard');
-	});
+    test('Displays the heading Leaderboard', ()=>{
+        const heading = screen.getByRole('heading');
+        expect(heading.textContent).toBe("Leaderboard")
+    })
 })

@@ -19,7 +19,8 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
-        "is_bot": false
+        "finish": false,
+        "is_ready": false
     },
     {
         "id": 2,
@@ -30,7 +31,8 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
-        "is_bot": false
+        "finish": false,
+        "is_ready": false
     },
     {
         "id": 3,
@@ -41,7 +43,8 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
-        "is_bot": false
+        "finish": false,
+        "is_ready": false
     },
     {
         "id": 4,
@@ -52,11 +55,12 @@ const playerList = [
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
-        "is_bot": false
+        "finish": false,
+        "is_ready": false
     }
 ];
 
-const playersReducer = (state = playerList, action) => {
+const playersReducer = (state = [], action) => {
     switch(action.type) {
         case "UPDATE_PLAYER":
             state.map((cur, index)=>{
@@ -65,6 +69,24 @@ const playersReducer = (state = playerList, action) => {
                 }
             });
             return state;
+        case "CREATE_SINGLE_PLAY":
+            state = [];
+            state[0] = {
+                "id": 1,
+                "name": action.payload,
+                "nationality": "GBR",
+                "lap": 0, 
+                "timer": 0,
+                "penalty": 0,
+                "drs_used": false,
+                "pit_entered": false,
+                "finish": false,
+                "is_ready": false
+            };
+            return state;
+            case "CREATE_MULTI_PLAY":
+                state = playerList;
+                return state;
         default:
             return state;
     }

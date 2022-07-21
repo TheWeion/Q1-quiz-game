@@ -1,10 +1,13 @@
 import React from 'react';
-import './styles.css'
+import './styles.css';
+
 const Rules = () => {
 	return (
 	<>
-		<h1 className="title">Rules</h1>
-		<ul className="rules">
+	<div className="flag">
+		<div className='center1'>
+		<h1>Rules</h1>
+		<ul>
 			<li>Each correct answer completes 1 lap</li>
 			<li>Each wrong attempt incurs a 5 second penalty.</li>
 			<li>You can open the DRS once - allowing you to skip 1 question.</li>
@@ -15,6 +18,8 @@ const Rules = () => {
 			<li>3rd Place - Will earn you 15 additional points</li>
 			<li>4th Place - Will earn you 10 additional points</li>
 		</ul>
+		</div>
+		</div>
 	</>
   );
 };

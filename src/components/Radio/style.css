@@ -1,25 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
 
 .Wrapper{
-    background-color: rgb(0, 0, 0);
+    background-color: #000000;
     border-radius: 10px;
     width: 100px;
-    height: 175px;
+    height: fit-content;
     float: right;
     margin-right: 15px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 3px;
     box-shadow: 1px 2px #808080;
+    font-family: 'Racing Sans One';
+    color: white;
+    margin-bottom: 10px;
 }
 
 .waveform{
-    width: 100px;
-    height: 60px;
+    content: url('../../../public/waveform.jpg');
+    width: 90px;
+    height: 50px;
 }
 
 .h31{
     padding-top: 30px;
-    font-size: 12pt;
+    font-size: 16pt;
     font-family: 'Racing Sans One';
     color: rgb(255, 0, 0);
 }
@@ -28,4 +31,5 @@
     font-family: 'Racing Sans One';
     color: rgb(255, 0, 0);
     align-items: center;
+    font-size: 18pt;
 }

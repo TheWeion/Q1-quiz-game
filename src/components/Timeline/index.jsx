@@ -7,12 +7,12 @@ import './style.css';
 
 
 
-const Timeline = ({player1, player2, player3, player4, totalLap}) => {
+const Timeline = ({players, totalLap}) => {
 
-  const [player1Position, setPlayer1Position] = useState("progress-line1"); 
+  /*const [player1Position, setPlayer1Position] = useState("progress-line1"); 
   const [player2Position, setPlayer2Position] = useState("progress-line1");
   const [player3Position, setPlayer3Position] = useState("progress-line1");
-  const [player4Position, setPlayer4Position] = useState("progress-line1");
+  const [player4Position, setPlayer4Position] = useState("progress-line1");*/
 
   //now i need to have a function whereby it moves the position once the correct question is pressed 
   //make it so that it doesnt need to be changed
@@ -20,19 +20,9 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
   //dynamic values 
   //make each car move separate 
 
+  //this useEffect currently only works for the 10 lap I still need to fix the 5 and 15 lap 
 
-  //const soundSrc = ('../../../public/engine.mp3');
-
-  /*const callMySound = (src) => {
-    const sound= new Howl({
-      src, 
-      html5: true
-    })
-    sound.play()
-  };
-  */
-
-  useEffect(()=> {
+  /*useEffect(()=> {
     let player1PositionClass = "progress-line1";
     console.log(totalLap);
     for (let ind = 0; ind < totalLap; ind++) {
@@ -40,91 +30,74 @@ const Timeline = ({player1, player2, player3, player4, totalLap}) => {
         player1PositionClass = "progress-line1";
       } else {
         if (player1 === ind) {
-         // callMySound(soundSrc);
-        player1PositionClass = "correct-line" + ind;
+          callMySound(soundSrc);
+          player1PositionClass = "correct-line" + ind;
+        }
       }
-    }
     }
     setPlayer1Position(player1PositionClass);
-  },[player1]);
+  },[player1]);*/
+  
+    //callMySound(soundSrc);
+  
+    /*useEffect(()=>{
+      callMySound(soundSrc);
+    },[players])*/
+  
 
-  useEffect(()=> {
-    let player2PositionClass = "progress-line1";
-    console.log(totalLap);
+  /*const soundSrc = '../../../public/engine.mp3';
+
+  const callMySound = (src) => {
+    const sound= new Howl({
+      src, 
+      html5: true
+    })
+    sound.play()
+  }*/
+
+  const generateCar = (curPlayer) => {
+    let lap = curPlayer.lap;
+    let finish = curPlayer.finish;
+    let html = `
+      <div class='row'>`;
     for (let ind = 0; ind < totalLap; ind++) {
-      if (player2 === 0) {
-        player2PositionClass = "progress-line1";
+      if (finish) {
+        html = html + `<div class='col'></div>`;
       } else {
-        if (player2 === ind) {
-        player2PositionClass = "correct-line" + ind;
+        if (ind === lap) {
+          html = html + `<div class='col'><img src='./TestCar.png' style='width: 55px;' /></div>`;
+        } else {
+          html = html + `<div class='col'></div>`;
+        }
       }
     }
-  }
-    setPlayer2Position(player2PositionClass);
-  },[player2]);
-
-  useEffect(()=> {
-    let player3PositionClass = "progress-line1";
-    console.log(totalLap);
-    for (let ind = 0; ind < totalLap; ind++) {
-      if (player3 === 0) {
-        player3PositionClass = "progress-line1";
-      } else {
-        if (player3 === ind) {
-        player3PositionClass = "correct-line" + ind;
-      }
+    if (finish) {
+      html = html + `<div class='col'><img src='./TestCar.png' style='width: 55px;' /></div>`;
+    } else {
+      html = html + `<div class='col'></div>`;
     }
-  }
-    setPlayer3Position(player3PositionClass);
-  },[player3]);
-
-  useEffect(()=> {
-    let player4PositionClass = "progress-line1";
-    console.log(totalLap);
-    for (let ind = 0; ind < totalLap; ind++) {
-      if (player4 === 0) {
-        player4PositionClass = "progress-line1";
-      } else {
-        if (player1 === ind) {
-        player4PositionClass = "correct-line" + ind;
-      }
-    }
-  }
-    setPlayer4Position(player4PositionClass);
-  },[player4]);
-
-
+    html = html + `</div>`;
+    return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
+  };
+  
   const generateLabel = () => {
-    let html = ``;
-    if(totalLap == 5){
-      for (let ind = 0; ind < totalLap; ind++) {
-        html = html + `<label>L ${ind + 1}</label>`;
-      }
-      }else if(totalLap == 10){
-        for (let ind = 0; ind < totalLap; ind++) {
-          html = html + `<label class='label1'>L ${ind + 1}</label>`;
-        }
-      }else if(totalLap == 15){
-        for (let ind = 0; ind < totalLap; ind++) {
-          html = html + `<label class='label2'>L ${ind + 1}</label>`;
-        }
-      }
-      return <div dangerouslySetInnerHTML={{__html: html}}/>;
-    };
+    let html = `
+      <div class='row'>`;
+    for (let ind = 0; ind < totalLap; ind++) {
+      html = html + `<div class='col'>L ${ind + 1}</div>`;
+    }
+    html = html + `<div class='col'>FIN</div>`;
+    html = html + `</div>`;
+    return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(html)}}/>;
+  };
     
-
   return (
     <>  
         <header>
           <div className='container1'>
-            <div className={player1Position}></div>
-            <div className={player2Position}></div>
-            <div className={player3Position}></div>
-            <div className={player4Position}></div>
+            { players.map((cur)=>generateCar(cur)) }
           </div>
-          <div className='label-wrap'>
-          { generateLabel() }       
-          </div>    
+          { generateLabel() }                     
         </header>
         <Outlet />
     </>
@@ -142,5 +115,3 @@ export default Timeline;
 //for(let i=0; i<questions.length; i++){
   console.log(questions[i])
   if(questions[i].correct_answer ==  ){*/
-
-  //I might generate the cars and then loop through the css the same way the label has been generated maybe 

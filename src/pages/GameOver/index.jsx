@@ -1,20 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import CloseButton from 'react-bootstrap/CloseButton';
+import './styles.css';
+import { useSelector } from 'react-redux';
+import { Podium } from '../../components';
+
+
 
 const GameOver = () => {
+
+	const players = useSelector(state => state.playersReducer);
+
 	const navigate = useNavigate();
-	
-	const exitHandler = () => {
-		navigate('/');
+
+	const handleClick = () => {
+		navigate(-1);
 	}
 	
 	return (
 		<>
-			<CloseButton id="nav-exit" onClick={exitHandler} />
-			<h1>Podium</h1>
-			{/* <PodiumRender /> */}
-
+		<Podium players={players}/>
+		<div className="podium2"></div>
 		</>
 	);
 }
