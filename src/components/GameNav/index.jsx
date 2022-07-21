@@ -39,8 +39,10 @@ const GameNav = () => {
 			navText = 'Leaderboard';
 			break;
 		case '/leaderboard':
-			navLoc = '/';
-			navText = 'Main Menu';
+			isBackVisible = true;
+			isNextVisible = false;
+			//navLoc = '/';
+			//navText = 'Main Menu';
 			break;
 		default:
 			isBackVisible = true;
