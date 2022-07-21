@@ -55,7 +55,7 @@ const Question = ({playerId}) => {
             player.drs_used = false;
             player.pit_entered = false;
             player.finish = false;
-            player.is_bot = false;
+            player.is_ready = false;
             updatePlayerRedux(player);
             resolve();
         });

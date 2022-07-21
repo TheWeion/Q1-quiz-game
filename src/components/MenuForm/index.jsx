@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createSinglePlay } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import DOMPurify from 'dompurify';
+import { socket } from '../../socket/socket.js';
 import './styles.css';
 
 const MenuForm = () => {
@@ -42,15 +43,18 @@ const MenuForm = () => {
     let html = ``;
     html = html + `
       <div className="row">
-        <div className="col-8"><label for="playerName">User Name</label><input type="text" id="playerName" name="playerName" ></input></div>
+        <div className="col">
+          <label for="playerName">User Name</label>
+          <input type="text" id="playerName" name="playerName" ></input>
+        </div>
       </div>
       <hr></hr>
       <div className="row">
-        <div className="col"><label>New room: </label><button id="create_new_room_button" class="btn btn-primary">Create room</button></div>
-      </div>
-      <hr></hr>
-      <div className="row">
-        <div className="col"><label>Join room: </label><input type="text" id="pin" name="pin" placeHolder="PIN"></input><button id="join_multi_play_button" class="btn btn-primary">Join</button></div>
+        <div className="col">
+          <label for="playerName">Room</label>
+          <select id="room_number"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+          <button id="join_multi_play_button" class="btn btn-primary">Join</button>
+        </div>
       </div>`;
     const singlePlayButton = document.getElementById("single_play_button");
     singlePlayButton.className = "btn btn-secondary";
@@ -60,28 +64,13 @@ const MenuForm = () => {
     if (intputFormDiv !== undefined && intputFormDiv !== null) {
       intputFormDiv.innerHTML = DOMPurify.sanitize(html);
     }
-    const createNewRoomButton = document.getElementById("create_new_room_button");
-    if (createNewRoomButton !== undefined && createNewRoomButton !== null) {
-      createNewRoomButton.addEventListener('click', ()=>{
-        const joinPlayerName = document.getElementById("playerName").value;
-        if (joinPlayerName !== undefined && joinPlayerName !== null && joinPlayerName !== "") {
-          console.log('create new room: ' + joinPlayerName);
-        } else {
-          alert('Please enter player name');
-        }
-      });
-    }
     const joinMultiPlayButton = document.getElementById("join_multi_play_button");
     if (joinMultiPlayButton !== undefined && joinMultiPlayButton !== null) {
       joinMultiPlayButton.addEventListener('click', ()=>{
         const joinPlayerName = document.getElementById("playerName").value;
         if (joinPlayerName !== undefined && joinPlayerName !== null && joinPlayerName !== "") {
-          const joinPin = document.getElementById("pin").value;
-          if (joinPin !== undefined && joinPin !== null && joinPin !== "") {
-            console.log('join multi play: ' + joinPin);
-          } else {
-            alert('Please enter PIN');
-          }
+          const roomNumber = document.getElementById("room_number").value;
+          console.log('join multi play: ' + roomNumber);
         } else {
           alert('Please enter player name');
         }
