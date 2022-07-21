@@ -34,3 +34,23 @@ return(
     </div>
     </>
 )*/
+
+//add radio static here and shorten the engine sound
+ /*
+const request = new XMLHttpRequest();
+request.open('GET', 'HardaTider-Har&nu.mp3', true);
+request.responseType = 'arraybuffer';
+ 
+request.addEventListener('load', function () {
+  var context = new (window.AudioContext || window.webkitAudioContext)();
+ 
+  context.decodeAudioData(request.response, function (buffer) {
+    React.render(
+        <Waveform buffer={buffer} width={720} color="cadetblue" />,
+        document.getElementById('waveform')
+        );
+  });
+});
+ 
+request.send();
+*/
