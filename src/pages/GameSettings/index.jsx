@@ -1,5 +1,6 @@
 import React from 'react';
 import GetQuestions from '../../components/GetQuestions';
+import './styles.css';
 
 const GameSettings = () => {
 	return (

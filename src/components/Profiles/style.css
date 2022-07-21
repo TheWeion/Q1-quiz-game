@@ -1,5 +1,16 @@
 .users{
     display: flex;
     justify-content: space-around;
+    background-color: #a40606;
+background-image: linear-gradient(315deg, #ff0000 0%, #ffffff 74%);
+border-radius: 5px;
 
+}
+
+.name1{
+    font-size: 16pt;
+}
+
+.score1{
+    font-size: 16pt;
 }

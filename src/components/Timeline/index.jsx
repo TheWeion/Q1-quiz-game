@@ -20,7 +20,7 @@ const Timeline = ({players, totalLap}) => {
   //dynamic values 
   //make each car move separate 
 
-  const soundSrc = ('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a');
+  const soundSrc = './engine.mp3';
 
   const callMySound = (src) => {
     const sound= new Howl({
@@ -51,6 +51,9 @@ const Timeline = ({players, totalLap}) => {
   
     //callMySound(soundSrc);
   
+    useEffect(()=>{
+      callMySound(soundSrc);
+    },[players])
   
 
   /*const soundSrc = '../../../public/engine.mp3';

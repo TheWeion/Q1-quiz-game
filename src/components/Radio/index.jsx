@@ -1,12 +1,13 @@
 import React from 'react';
 import './style.css'
+//import WaveForm from 'react-waveform';
 
 const Radio = ({message}) => {
     return(
         <>
             <div className='Wrapper'>
                 <span className='radioSpan'>Radio</span>
-                <h3>{ message }</h3>
+                <h3 className="h31">{ message }</h3>
             </div>
         </>
     )

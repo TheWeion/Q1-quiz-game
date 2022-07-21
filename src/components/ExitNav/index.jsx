@@ -21,7 +21,7 @@ const ExitNav = () => {
 	}
 
 	return (
-		<>
+		<>	
 			<CloseButton id="nav-exit" onClick={ExitHandler} />
 			<div className="logoo"></div>
 			<h1 className='banner'>Q1 Quiz</h1>

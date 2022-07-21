@@ -4,6 +4,7 @@ import { createMultiPlay } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Profiles } from '../../components';
 import Button from 'react-bootstrap/Button';
+import './styles.css';
 
 const Leaderboard = () => {
 	const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Leaderboard = () => {
 
 	return (
 		<>
-			<h1>Leaderboard</h1>
+			<h1 className='leaderBoard'>Leaderboard</h1>
 			<Profiles />
 			<Button onClick={handleClick}>Main Menu</Button>
 		</>
