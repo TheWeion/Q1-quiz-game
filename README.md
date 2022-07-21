@@ -30,14 +30,53 @@
 * Run  `npm test` to run test suites.
 * Run `npm coverage` to check test code coverage.
 
-* The live website can be accessed: [HERE]()
+* The live website can be accessed: [HERE](https://q1-fp.netlify.app/)
 
 ## Changelog
 
+### v0.1.5 - Alpha "**pops** Pass the Champagne" Release (21/07/2022)
+
+- [x] Handled Single Player flow.
+
+- [x] Added Q1 Logo.
+
+- [x] Player Data fixes.
+
+- [x] Added dompurify.
+
+### v0.0.4 - Alpha "Vroom, Vroom" Release (20/07/2022)
+
+- [x] Implemented Socket.IO.
+
+- [x] Added fonts.
+
+- [x] UI fixes.
+
+- [x] Added sanitize for innerHTML in Timeline component.
+
+### v0.0.3 - Alpha "3, 2, 1, Race!" Release (19/07/2022)
+
+- [x] Added Timer and Penalty.
+
+- [x] Added the Podium component to the app and added to GUI.
+
+- [x] Added DRS and Pit Stop game mechanics.
+
+### v0.0.2 - Alpha "Box, Box" Release (18/07/2022)
+
+- [x] Added `react-bootstrap` to the project for UI components.
+
+- [x] Defect fixes.
+
+- [x] Implemented Timeline.
+
+- [x] Added `react-router-dom` to the dependencies.
+
+- [x] Added Routes and Game Event Pages to the app.
 
 ### v0.0.1 - Alpha "Off to the Pit with ye" Release (15/07/2022)
 
-- [x] Initial Commit to GitHub using React Create App
+- [x] Initial Commit to GitHub using React Create App.
 
 ## TODO
 
