@@ -4,7 +4,7 @@ import { createSinglePlay } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import DOMPurify from 'dompurify';
 import { socket } from '../../socket/socket.js';
-
+import './styles.css';
 
 const MenuForm = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const MenuForm = () => {
     const singlePlayButton = document.getElementById("single_play_button");
     singlePlayButton.className = "btn btn-primary";
     const multiPlayButton = document.getElementById("multi_play_button");
-    multiPlayButton.className = "btn btn-secondary";
+    multiPlayButton.className = "btn btnc btn-secondary";
     const intputFormDiv = document.getElementById("input_form");
     if (intputFormDiv !== undefined && intputFormDiv !== null) {
       intputFormDiv.innerHTML = DOMPurify.sanitize(html);
@@ -59,7 +59,7 @@ const MenuForm = () => {
     const singlePlayButton = document.getElementById("single_play_button");
     singlePlayButton.className = "btn btn-secondary";
     const multiPlayButton = document.getElementById("multi_play_button");
-    multiPlayButton.className = "btn btn-primary";
+    multiPlayButton.className = "btn btnc btn-primary";
     const intputFormDiv = document.getElementById("input_form");
     if (intputFormDiv !== undefined && intputFormDiv !== null) {
       intputFormDiv.innerHTML = DOMPurify.sanitize(html);
@@ -83,8 +83,11 @@ const MenuForm = () => {
       <div className="card card-body">
         <div className="row">
           <div className="col">
+            <div className='images'></div>
+            <div className='image2'></div>
+            <div className='explanantion'><h1 className='title'>Motorsports now meets the Quizworld</h1></div>
             <button id="single_play_button" className="btn btn-secondary" onClick={handleSinglePlay}>Single Play</button>
-            <button id="multi_play_button" className="btn btn-secondary" onClick={handleMultiPlay}>Multi Play</button>
+            <button id="multi_play_button" className="btn btnc btn-secondary" onClick={handleMultiPlay}>Multi Play</button>
           </div>
         </div>
         <div className="row">

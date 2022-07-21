@@ -3,12 +3,16 @@ import GetQuestions from '../../components/GetQuestions';
 import './styles.css';
 
 const GameSettings = () => {
+
+
 	return (
 	<>
-		<h1>Selection</h1>
+	<div className="flag2">
+		<h1 className="selection">Selection</h1>
 		{ <GetQuestions /> }
 		<br />
     	{/* <GameConfig /> */}
+		</div>
 	</>
   );
 };

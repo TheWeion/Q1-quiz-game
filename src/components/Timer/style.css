@@ -10,7 +10,7 @@
     color: red;
     display: inline;
     font-weight: bold;
-    font-size: 300%;
+    font-size: 200%;
     padding: 3px;
 }
 
@@ -22,5 +22,5 @@
 .timer-label {
     font-family: 'Racing Sans One';
     display: inline;
-    font-size: 300%;
+    font-size: 200%;
 }
