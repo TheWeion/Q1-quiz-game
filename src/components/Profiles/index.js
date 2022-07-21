@@ -9,8 +9,8 @@ const Profiles = () => {
         <div className='user-container'>
             {HighestToLowest.map((user, index) => (
                 <div className='users' key={index}>
-                    <p>{user.name}</p>
-                    <p>{user.score}</p>                  
+                    <p className='name1'>{user.name}</p>
+                    <p className='score1'>{user.score}</p>                  
                 </div>          
             ))}
         </div>
