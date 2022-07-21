@@ -15,10 +15,11 @@
     float:right;
 }
 
-.btnb{
-    margin-right: 210px;
+.btnc{
+    float: right;
 }
 
-.playerLabel{
-    font-size: 16pt;
+.title{
+    text-align: center;
+    color: red;
 }

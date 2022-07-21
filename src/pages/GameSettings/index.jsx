@@ -3,6 +3,8 @@ import GetQuestions from '../../components/GetQuestions';
 import './styles.css';
 
 const GameSettings = () => {
+
+
 	return (
 	<>
 	<div className="flag2">

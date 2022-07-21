@@ -5,5 +5,8 @@
 }
 
 .podium2{
-    content: url('../../../public/Podium.png');
+    background-image: url('../../../public/Podium.png');
+    height:500px;
+    width:630px;
+   
 }

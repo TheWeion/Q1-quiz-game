@@ -282,7 +282,7 @@ const Question = ({playerId}) => {
                         <div class="row">
                             <div class="col">
                                 <div class="row justify-content-start">
-                                    <div class="col-1">
+                                    <div class="col">
                                         <div class="question_number">${ index + 1 }.</div>
                                     </div>
                                     <div class="col">

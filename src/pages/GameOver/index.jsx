@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Podium } from '../../components';
 
 
+
 const GameOver = () => {
 
 	const players = useSelector(state => state.playersReducer);
@@ -17,6 +18,7 @@ const GameOver = () => {
 	
 	return (
 		<>
+		<Podium players={players}/>
 		<div className="podium2"></div>
 		</>
 	);
