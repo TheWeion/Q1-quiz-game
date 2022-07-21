@@ -9,7 +9,7 @@ const Podium = ({players}) => {
         <>
         <div className='podium'>
             {players.map((cul, index) => 
-                <h2>{cul.name}: <Timer time={cul.timer + cul.penalty} />  Question: <Timer time={cul.timer} />  Penalty: <Timer time={cul.penalty} /></h2>
+                <h3>{cul.name}: <Timer time={cul.timer + cul.penalty} /></h3>
                 
             )}
         </div>
