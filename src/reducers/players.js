@@ -60,7 +60,7 @@ const playerList = [
     }
 ];
 
-const playersReducer = (state = playerList, action) => {
+const playersReducer = (state = [], action) => {
     switch(action.type) {
         case "UPDATE_PLAYER":
             state.map((cur, index)=>{
@@ -69,6 +69,24 @@ const playersReducer = (state = playerList, action) => {
                 }
             });
             return state;
+        case "CREATE_SINGLE_PLAY":
+            state = [];
+            state[0] = {
+                "id": 1,
+                "name": action.payload,
+                "nationality": "GBR",
+                "lap": 0, 
+                "timer": 0,
+                "penalty": 0,
+                "drs_used": false,
+                "pit_entered": false,
+                "finish": false,
+                "is_bot": false
+            };
+            return state;
+            case "CREATE_MULTI_PLAY":
+                state = playerList;
+                return state;
         default:
             return state;
     }
