@@ -20,7 +20,7 @@
 
 .h31{
     padding-top: 30px;
-    font-size: 12pt;
+    font-size: 16pt;
     font-family: 'Racing Sans One';
     color: rgb(255, 0, 0);
 }
@@ -29,4 +29,5 @@
     font-family: 'Racing Sans One';
     color: rgb(255, 0, 0);
     align-items: center;
+    font-size: 18pt;
 }

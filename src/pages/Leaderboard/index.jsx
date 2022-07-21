@@ -29,7 +29,7 @@ const Leaderboard = () => {
 
 	return (
 		<>
-			<h1>Leaderboard</h1>
+			<h1 className='leaderBoard'>Leaderboard</h1>
 			<Profiles />
 			<Button onClick={handleClick}>Main Menu</Button>
 		</>
