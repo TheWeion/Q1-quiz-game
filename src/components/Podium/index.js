@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 import './style.css'
+import { socket } from '../../socket/socket.js';
 import Timer from '../Timer';
 
-const Podium = ({players}) => {
-    console.log(players)
+const Podium = () => {
+    const infos = useSelector(state => state.infoReducer);
+    const playerFromReducer = useSelector(state => state.playersReducer);
+    const [players, setPlayers] = useState([]);
+
+    socket.emit('getPlayers', {roomId: infos.roomId});
+
+    useEffect(()=>{
+        if (infos.multiPlay) {
+            socket.on('getPlayers', (res)=>{
+                if (res.status === 'OK') {
+                    setPlayers(res.data);
+                }
+            });
+        } else {
+            setPlayers(playerFromReducer);
+        }
+    }, [socket]);
 
     return(
         <>

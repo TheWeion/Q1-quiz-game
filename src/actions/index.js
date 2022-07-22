@@ -25,3 +25,24 @@ export const createMultiPlay = () => {
         payload: null
     }
 };
+
+export const setPlayerId = (playerId) => {
+    return {
+        type: "SET_PLAYER_ID",
+        payload: playerId
+    }
+};
+
+export const setRoomId = (roomId) => {
+    return {
+        type: "SET_ROOM_ID",
+        payload: roomId
+    }
+};
+
+export const setMultiPlay = (isMultiPlay) => {
+    return {
+        type: "SET_MULTI_PLAY",
+        payload: isMultiPlay
+    }
+};

@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 const GetQuestions = () => {
     const questions = useSelector(state => state.questionsReducer);
+    const infos = useSelector(state => state.infoReducer);
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -34,9 +35,25 @@ const GetQuestions = () => {
           });
         questions.then((cur)=>{
             dispatch(setQuestions(cur));
-            navigate("../rules");
+            console.log(infos);
+            if (infos.multiPlay) {
+                socket.emit('updateQuestions', {"roomId": infos.roomId, "questions": cur});
+            } else {
+                navigate("../rules");
+            }
         });
     }
+
+    useEffect(()=>{
+        if (infos.multiPlay) {
+            socket.on('updateQuestions', (res)=>{
+                console.log(res);
+                if (res.status === 'OK') {
+                    navigate("../rules");
+                }
+            });
+        }
+    }, [socket]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
