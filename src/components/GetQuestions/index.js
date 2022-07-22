@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { setQuestions } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { socket } from '../../socket/socket.js';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
