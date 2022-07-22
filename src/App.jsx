@@ -24,6 +24,7 @@ const App = () => {
                 <Route path="/game" element={<Pages.Game />} />
                 <Route path="/gameover" element={<Pages.GameOver />} />
                 <Route path="/leaderboard" element={<Pages.Leaderboard />} />
+                <Route path="/waiting" element={<Pages.WaitingRoom />} />
               </Routes>
             </Card.Body>
             <Card.Footer>

@@ -5,3 +5,4 @@ export { default as Rules } from './Rules';
 export { default as Game } from './Game';
 export { default as GameOver } from './GameOver';
 export { default as Leaderboard } from './Leaderboard';
+export { default as WaitingRoom } from './WaitingRoom';
