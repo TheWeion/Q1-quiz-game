@@ -14,7 +14,9 @@ const GameOver = () => {
 	
 	return (
 		<>
+		<div className="timerChange">
 		<Podium />
+		</div>
 		<div className="podium2"></div>
 		</>
 	);
