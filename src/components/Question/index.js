@@ -36,7 +36,7 @@ const Question = ({playerId}) => {
         resetValues().then(()=>{
             console.log(`Reset`);
         });
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps 
 
     const resetValues = () => {
         return new Promise((resolve, reject) => {
@@ -78,7 +78,7 @@ const Question = ({playerId}) => {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [clockRunning]);
+    }, [clockRunning]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(()=>{
         if (foundCorrectAnswer) {
@@ -91,7 +91,7 @@ const Question = ({playerId}) => {
             setStartPress(false);
             renderQuestionHTML(false);
         }
-    }, [clockRunning]);
+    }, [clockRunning]); // eslint-disable-line react-hooks/exhaustive-deps
     
     const wait = async(second) => {
         return new Promise(resolve => setTimeout(resolve, second*1000));
@@ -276,7 +276,7 @@ const Question = ({playerId}) => {
                     if (!list.includes(correct)) {
                         list.splice(positionInsertCorrectAnswer, 0, correct);
                     }
-                    list.map((cur, index)=>{
+                    list.map((cur, index)=>{ // eslint-disable-line array-callback-return
                         list[index]['id'] = index;
                         html = html + `
                         <div class="row">
@@ -337,7 +337,7 @@ const Question = ({playerId}) => {
                         handleStartTimer();
                     });
                 }
-                list.map((cur)=>{
+                list.map((cur)=>{ // eslint-disable-line array-callback-return
                     const curButton = document.getElementById("button_" + cur.id);
                     if (curButton !== undefined && curButton !== null) {
                         curButton.addEventListener('click', ()=>{
@@ -367,7 +367,7 @@ const Question = ({playerId}) => {
 
     useEffect(()=>{
         renderQuestionHTML(false);
-    }, [players]);
+    }, [players]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
