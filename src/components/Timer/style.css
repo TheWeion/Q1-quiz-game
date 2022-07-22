@@ -1,0 +1,26 @@
+@font-face {
+    font-family: timerFont;
+    src: local('E1234.ttf'), url('../../font/E1234.ttf') format('truetype');
+}
+
+.timer {
+    border-radius: 10px;
+    font-family: timerFont;
+    background-color: black;
+    color: red;
+    display: inline;
+    font-weight: bold;
+    font-size: 150%;
+    padding: 3px;
+}
+
+.numbers{
+   float: left;
+
+}
+
+.timer-label {
+    font-family: 'Racing Sans One';
+    display: inline;
+    font-size: 200%;
+}

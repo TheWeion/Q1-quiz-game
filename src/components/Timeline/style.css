@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+
+.container1{
+    position: relative;
+    height: 150px;
+    background-image: url(../../../public/Race\ track\ time\ line.webp);
+    background-position: center;
+    background-size: cover; 
+    border-radius: 5px;
+
+} 
+
+.progress-line1 {
+     width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     content: url(../../../public/TestCar.png);
+     
+}
+
+
+.correct-line1{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 100px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line2{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 200px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line3{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 300px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line4{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 400px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line5{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 500px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line6{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 600px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line7{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 700px;
+     content: url(../../../public/TestCar.png);
+}
+ 
+.correct-line8{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 800px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line9{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 900px;
+     content: url(../../../public/TestCar.png);
+}
+
+.correct-line10{
+    width: 55px;
+     padding-bottom: 10px;
+     padding-top: 5px;
+     margin-left: 1000px;
+     content: url(../../../public/TestCar.png);
+}
+
+.Cbtn{
+    display:flex;
+    justify-items: center;
+}
+
+.name{
+    color:whitesmoke;
+}
