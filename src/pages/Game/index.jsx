@@ -1,10 +1,11 @@
 import React from 'react';
 import Question from '../../components/Question';
+import './styles.css';
 
 const Game = () => {
 	return (
 		<>
-			<Question playerId={1} />
+			<Question />
 			<br />
 		</>
 	);

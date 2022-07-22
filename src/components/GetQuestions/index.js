@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { socket } from '../../socket/socket.js';
 import QuestionList from '../QuestionList';
 import Question from '../Question';
 
 const GetQuestions = () => {
     const questions = useSelector(state => state.questionsReducer);
+    const infos = useSelector(state => state.infoReducer);
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -36,9 +38,25 @@ const GetQuestions = () => {
           });
         questions.then((cur)=>{
             dispatch(setQuestions(cur));
-            navigate("../rules");
+            console.log(infos);
+            if (infos.multiPlay) {
+                socket.emit('updateQuestions', {"roomId": infos.roomId, "questions": cur});
+            } else {
+                navigate("../rules");
+            }
         });
     }
+
+    useEffect(()=>{
+        if (infos.multiPlay) {
+            socket.on('updateQuestions', (res)=>{
+                console.log(res);
+                if (res.status === 'OK') {
+                    navigate("../rules");
+                }
+            });
+        }
+    }, [socket]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

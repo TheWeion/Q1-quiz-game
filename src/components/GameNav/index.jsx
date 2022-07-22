@@ -23,9 +23,8 @@ const GameNav = () => {
 			isNextVisible = false;
 			break;
 		case '/rules':
-			isNextVisible = true;
-			navLoc = '/game';
-			navText = 'Engine Start';
+			isBackVisible = true;
+			isNextVisible = false;
 			break;
 		case '/game':
 			isBackVisible = false;
@@ -42,6 +41,10 @@ const GameNav = () => {
 			isNextVisible = false;
 			//navLoc = '/';
 			//navText = 'Main Menu';
+			break;
+		case '/waiting':
+			isBackVisible = false;
+			isNextVisible = false;
 			break;
 		default:
 			isBackVisible = true;

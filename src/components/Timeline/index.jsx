@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Outlet } from 'react-router-dom';
 import DOMPurify from 'dompurify';
-import {Howl} from "howler"
+//import {Howl} from "howler"
 
 import './style.css';
 
@@ -19,17 +19,6 @@ const Timeline = ({players, totalLap}) => {
   //inline
   //dynamic values 
   //make each car move separate 
-
-  const soundSrc = ('http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a');
-
-  const callMySound = (src) => {
-    const sound= new Howl({
-      src, 
-      html5: true
-    })
-    sound.play()
-  };
-  
 
   //this useEffect currently only works for the 10 lap I still need to fix the 5 and 15 lap 
 
@@ -51,6 +40,9 @@ const Timeline = ({players, totalLap}) => {
   
     //callMySound(soundSrc);
   
+    /*useEffect(()=>{
+      callMySound(soundSrc);
+    },[players])*/
   
 
   /*const soundSrc = '../../../public/engine.mp3';
