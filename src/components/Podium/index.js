@@ -6,6 +6,7 @@ import Timer from '../Timer';
 
 const Podium = () => {
     const infos = useSelector(state => state.infoReducer);
+    const playerFromReducer = useSelector(state => state.playersReducer);
     const [players, setPlayers] = useState([]);
 
     socket.emit('getPlayers', {roomId: infos.roomId});
@@ -17,6 +18,8 @@ const Podium = () => {
                     setPlayers(res.data);
                 }
             });
+        } else {
+            setPlayers(playerFromReducer);
         }
     }, [socket]);
 
