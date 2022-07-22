@@ -11,56 +11,52 @@ const playerList = [
     > 4th place get 10 points
     */
     {
-        "id": 1,
+        "id": 0,
         "name": "Player 1",
-        "nationality": "GBR",
         "lap": 0, 
         "timer": 0,
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "finish": false,
-        "is_bot": false
+        "is_ready": false
+    },
+    {
+        "id": 1,
+        "name": "Player 2",
+        "lap": 0,
+        "timer": 0,
+        "penalty": 0,
+        "drs_used": false,
+        "pit_entered": false,
+        "finish": false,
+        "is_ready": false
     },
     {
         "id": 2,
-        "name": "Player 2",
-        "nationality": "GBR",
+        "name": "Player 3",
         "lap": 0,
         "timer": 0,
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "finish": false,
-        "is_bot": false
+        "is_ready": false
     },
     {
         "id": 3,
-        "name": "Player 3",
-        "nationality": "GBR",
-        "lap": 0,
-        "timer": 0,
-        "penalty": 0,
-        "drs_used": false,
-        "pit_entered": false,
-        "finish": false,
-        "is_bot": false
-    },
-    {
-        "id": 4,
         "name": "Player 4",
-        "nationality": "GBR",
         "lap": 0,
         "timer": 0,
         "penalty": 0,
         "drs_used": false,
         "pit_entered": false,
         "finish": false,
-        "is_bot": false
+        "is_ready": false
     }
 ];
 
-const playersReducer = (state = [], action) => {
+const playersReducer = (state = playerList, action) => {
     switch(action.type) {
         case "UPDATE_PLAYER":
             state.map((cur, index)=>{
@@ -72,16 +68,15 @@ const playersReducer = (state = [], action) => {
         case "CREATE_SINGLE_PLAY":
             state = [];
             state[0] = {
-                "id": 1,
+                "id": 0,
                 "name": action.payload,
-                "nationality": "GBR",
                 "lap": 0, 
                 "timer": 0,
                 "penalty": 0,
                 "drs_used": false,
                 "pit_entered": false,
                 "finish": false,
-                "is_bot": false
+                "is_ready": false
             };
             return state;
             case "CREATE_MULTI_PLAY":

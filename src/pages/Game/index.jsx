@@ -5,7 +5,7 @@ import './styles.css';
 const Game = () => {
 	return (
 		<>
-			<Question playerId={1} />
+			<Question />
 			<br />
 		</>
 	);

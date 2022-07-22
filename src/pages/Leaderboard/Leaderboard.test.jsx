@@ -16,5 +16,4 @@ describe('Intro', () => {
         const heading = screen.getByRole('heading');
         expect(heading.textContent).toBe("Leaderboard")
     })
-
 })

@@ -10,15 +10,17 @@ import Radio from '../Radio';
 import { getRadioMessage } from '../Radio/radio';
 import './style.css';
 import Timeline from '../Timeline';
+import { socket } from '../../socket/socket.js';
 
-const Question = ({playerId}) => {
+const Question = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const infos = useSelector(state => state.infoReducer);
     const players = useSelector(state => state.playersReducer);
     const questions = useSelector(state => state.questionsReducer);
-
-    let targetPlayer = players.filter((cur)=>cur.id===playerId)[0];
+    
+    let targetPlayer = players.filter((cur)=>cur.id===infos.playerId)[0];
 
     const [time, setTime] = useState(0); // Total time elapsed
     const [penalty, setPenalty] = useState(0); // Total penalty time
@@ -55,7 +57,7 @@ const Question = ({playerId}) => {
             player.drs_used = false;
             player.pit_entered = false;
             player.finish = false;
-            player.is_bot = false;
+            player.is_ready = false;
             updatePlayerRedux(player);
             resolve();
         });
@@ -71,6 +73,7 @@ const Question = ({playerId}) => {
             if (time !== targetPlayer.timer) {
                 let player = targetPlayer;
                 player.timer = time;
+                updateToSever(player);
                 updatePlayerRedux(player);
                 setTime(player.timer);
                 setPenalty(player.penalty);
@@ -92,6 +95,20 @@ const Question = ({playerId}) => {
             renderQuestionHTML(false);
         }
     }, [clockRunning]);
+
+    useEffect(()=>{
+        if (infos.multiPlay) {
+            socket.on('getPlayers', (res)=>{
+                if (res.status === 'OK') {
+                    res.data.map((cur)=>{
+                        if (infos.playId !== cur.id) {
+                            updatePlayerRedux(cur);
+                        }
+                    });
+                }
+            });
+        }
+    }, [socket]);
     
     const wait = async(second) => {
         return new Promise(resolve => setTimeout(resolve, second*1000));
@@ -162,6 +179,7 @@ const Question = ({playerId}) => {
     const setEnteredPit = () => {
         let player = targetPlayer;
         player.pit_entered = true;
+        updateToSever(player);
         updatePlayerRedux(player);
     };
 
@@ -171,9 +189,11 @@ const Question = ({playerId}) => {
         if (nextLap !== questions.length) {
             player.lap = nextLap;
             setLap(nextLap);
+            updateToSever(player);
             updatePlayerRedux(player);
         } else {
             player.finish = true;
+            updateToSever(player);
             updatePlayerRedux(player);
             setRadioMessage(getRadioMessage(FINISH_MESSAGE));
             wait(3).then(()=>{
@@ -186,17 +206,26 @@ const Question = ({playerId}) => {
         let player = targetPlayer;
         let newVal = player.penalty + second*1000;
         player.penalty = newVal;
+        updateToSever(player);
         updatePlayerRedux(player);
     };
 
     const setDrsUsed = () => {
         let player = targetPlayer;
         player.drs_used = true;
+        updateToSever(player);
         updatePlayerRedux(player);
     };
 
     const updatePlayerRedux = (player) => {
         dispatch(updatePlayer(player));
+    };
+
+    const updateToSever = (player) => {
+        if (infos.multiPlay) {
+            socket.emit('updatePlayer', {roomId: infos.roomId, playerId: infos.playerId, player: player});
+            socket.emit('getPlayers', {roomId: infos.roomId});
+        }
     };
 
     ////// Handle Button + Message //////
@@ -294,7 +323,7 @@ const Question = ({playerId}) => {
                             </div>
                         </div>`;
                     });
-                    console.log(list);
+                    //console.log(list);
                     let drsClass = `class="btn btn-danger"`;
                     if (targetPlayer.drs_used) {
                         drsClass = `class="btn btn-secondary"`;
