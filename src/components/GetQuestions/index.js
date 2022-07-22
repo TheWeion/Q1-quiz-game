@@ -4,9 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { socket } from '../../socket/socket.js';
-import QuestionList from '../QuestionList';
-import Question from '../Question';
 
 const GetQuestions = () => {
     const questions = useSelector(state => state.questionsReducer);
@@ -116,7 +113,7 @@ const GetQuestions = () => {
 
     useEffect(()=>{
         renderHTML();
-    }, [questions])
+    }, [questions]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return renderHTML();
 };
