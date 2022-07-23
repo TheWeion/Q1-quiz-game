@@ -59,7 +59,7 @@ const playerList = [
 const playersReducer = (state = playerList, action) => {
     switch(action.type) {
         case "UPDATE_PLAYER":
-            state.map((cur, index)=>{
+            state.map((cur, index)=>{ // eslint-disable-line array-callback-return
                 if (cur.id === action.payload.id) {
                     state[index] = action.payload;
                 }
