@@ -31,7 +31,7 @@ const playerList = [
         "pit_entered": false,
         "finish": false,
         "is_ready": false
-    },
+    }/*,
     {
         "id": 2,
         "name": "Player 3",
@@ -53,7 +53,7 @@ const playerList = [
         "pit_entered": false,
         "finish": false,
         "is_ready": false
-    }
+    }*/
 ];
 
 const playersReducer = (state = playerList, action) => {

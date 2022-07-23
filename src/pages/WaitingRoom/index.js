@@ -16,8 +16,8 @@ const WaitingRoom = () => {
 
     const [player1Ready, setPlayer1Ready] = useState(false);
     const [player2Ready, setPlayer2Ready] = useState(false);
-    const [player3Ready, setPlayer3Ready] = useState(false);
-    const [player4Ready, setPlayer4Ready] = useState(false);
+    /*const [player3Ready, setPlayer3Ready] = useState(false);
+    const [player4Ready, setPlayer4Ready] = useState(false);*/
 
     useEffect(()=>{
         if (infos.multiPlay) {
@@ -43,7 +43,7 @@ const WaitingRoom = () => {
                         dispatch(updatePlayer(player2));
                         setPlayer2Ready(true);
                     }
-                    let player3 = res.data[2];
+                    /*let player3 = res.data[2];
                     if (player3.is_ready) {
                         dispatch(updatePlayer(player3));
                         setPlayer3Ready(true);
@@ -52,7 +52,7 @@ const WaitingRoom = () => {
                     if (player4.is_ready) {
                         dispatch(updatePlayer(player4));
                         setPlayer4Ready(true);
-                    }
+                    }*/
                 }
             });
             socket.on('playerReady', (res)=>{
@@ -70,14 +70,14 @@ const WaitingRoom = () => {
 
     useEffect(()=>{
         if (infos.multiPlay) {
-            if (player1Ready, player2Ready, player3Ready, player4Ready) {
+            if (player1Ready && player2Ready/* && player3Ready && player4Ready*/) {
                 socket.emit('getQuestions', {"roomId": infos.roomId});
                 wait(3).then(()=>{
                     navigate('/game');
                 });
             }
         }
-    }, [player1Ready, player2Ready, player3Ready, player4Ready]);
+    }, [player1Ready, player2Ready/*, player3Ready, player4Ready*/]);
 
     const handleReady = () => {
         if (infos.multiPlay) {
