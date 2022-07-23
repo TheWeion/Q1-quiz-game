@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { createSinglePlay, setPlayerId, setRoomId, setMultiPlay, updatePlayer } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import DOMPurify from 'dompurify';
-import { socket } from '../../socket/socket.js';
+import { socket } from '../../socket/socket.js'; // eslint-disable-line no-unused-vars
 import './styles.css';
 
 const MenuForm = () => {
   const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const players = useSelector(state => state.playersReducer);
+	const players = useSelector(state => state.playersReducer); // eslint-disable-line no-unused-vars
 
   const handleSinglePlay = () => {
     let html = ``;
