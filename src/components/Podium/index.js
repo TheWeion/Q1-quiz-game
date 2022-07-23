@@ -15,13 +15,17 @@ const Podium = () => {
         if (infos.multiPlay) {
             socket.on('getPlayers', (res)=>{
                 if (res.status === 'OK') {
-                    setPlayers(res.data);
+                    setPlayers(sortByTime(res.data));
                 }
             });
         } else {
-            setPlayers(playerFromReducer);
+            setPlayers(sortByTime(playerFromReducer));
         }
     }, [socket]);
+
+    const sortByTime = (array) => {
+        return array.sort(function(a, b){return (a.timer+a.penalty)-(b.timer+b.penalty)})
+    };
 
     return(
         <>
