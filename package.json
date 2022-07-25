@@ -52,6 +52,6 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^6.3.0",
-    "jest": "^27.5.1"
+    "jest": "^28.1.3"
   }
 }
