@@ -32,9 +32,9 @@ const GameNav = () => {
 			break;
 		case '/gameover':
 			isBackVisible = false;
-			isNextVisible = true;
-			navLoc = '/leaderboard';
-			navText = 'Leaderboard';
+			isNextVisible = false;
+			//navLoc = '/leaderboard';
+			//navText = 'Leaderboard';
 			break;
 		case '/leaderboard':
 			isBackVisible = true;
