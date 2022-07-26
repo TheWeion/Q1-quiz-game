@@ -7,7 +7,7 @@ import Timer from '../Timer';
 const Podium = () => {
     const infos = useSelector(state => state.infoReducer);
     const playerFromReducer = useSelector(state => state.playersReducer);
-    const [players, setPlayers] = useState([]);
+    const [positions, setPositions] = useState([]);
 
     socket.emit('getPlayers', {roomId: infos.roomId});
 
@@ -15,11 +15,11 @@ const Podium = () => {
         if (infos.multiPlay) {
             socket.on('getPlayers', (res)=>{
                 if (res.status === 'OK') {
-                    setPlayers(sortByTime(res.data));
+                    setPositions(sortByTime(res.data));
                 }
             });
         } else {
-            setPlayers(sortByTime(playerFromReducer));
+            setPositions(sortByTime(playerFromReducer));
         }
     }, [socket]);
 
@@ -27,12 +27,41 @@ const Podium = () => {
         return array.sort(function(a, b){return (a.timer+a.penalty)-(b.timer+b.penalty)})
     };
 
+    const currentPlayerName = (cur) => {
+        if (cur.id === infos.playerId) {
+            return "(You)";
+        } else {
+            return cur.name;
+        }
+    };
+
+    const getPosition = (playerId) => {
+        if (positions.length > 0) {
+            for (let ind = 0; ind < positions.length; ind++) {
+                let cur = positions[ind];
+                if (cur.id === playerId) {
+                    if (ind === 0) {
+                        return "1st place";
+                    } else if (ind === 1) {
+                        return "2nd place";
+                    } else if (ind === 2) {
+                        return "3rd place";
+                    } else if (ind === 3) {
+                        return "4th place";
+                    } else {
+                        return (ind + 1).toString() + "th place";
+                    }
+                }
+            }
+        }
+    };
+
     return(
         <>
         <div className='podium'>
-            <span className="questionPodium">Will you make the podium?</span>
-            {players.map((cul, index) => 
-                <h3>{cul.name}: <Timer time={cul.timer + cul.penalty} /></h3>
+            <span className="questionPodium">You are { getPosition(infos.playerId) }</span>
+            {positions.map((cur) => 
+                <h3>{currentPlayerName(cur)}: <Timer time={cur.timer + cur.penalty} /></h3>
                 
             )}
             </div>
