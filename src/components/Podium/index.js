@@ -15,7 +15,6 @@ const Podium = () => {
         if (infos.multiPlay) {
             socket.on('getPlayers', (res)=>{
                 if (res.status === 'OK') {
-                    console.log(res.data.length);
                     setPositions(sortByTime(res.data));
                 }
             });
