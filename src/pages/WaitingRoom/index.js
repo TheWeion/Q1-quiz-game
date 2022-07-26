@@ -60,6 +60,10 @@ const WaitingRoom = () => {
             });
             if (readyCount === players.length) {
                 socket.emit('getQuestions', {"roomId": infos.roomId});
+                const div = document.getElementById("messageFromServer");
+                if (div !== undefined && div !== null) {
+                    div.innerHTML = "Loading..."
+                }
                 wait(3).then(()=>{
                     navigate('/game');
                 });
@@ -77,13 +81,22 @@ const WaitingRoom = () => {
         }
     };
 
+    const getPlayerName = () => {
+        if (infos.multiPlay) {
+            let curPlayer = players[infos.playerId];
+            let host = (curPlayer.id === 0) ? " (Host)" : "";
+            return curPlayer.name + host;
+        }
+        return "";
+    };
+
     const wait = async(second) => {
         return new Promise(resolve => setTimeout(resolve, second*1000));
     };
 
 	return (
 		<>
-			<h1 className='leaderBoard'>Prepare your car</h1>
+			<h1 className='leaderBoard'>You are { getPlayerName() }</h1>
             Please wait for bit
             <div className='card card-body'>
                 <div id="messageFromServer"></div>
