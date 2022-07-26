@@ -12,37 +12,16 @@ export const updatePlayer = (player) => {
     }
 };
 
-export const createSinglePlay = (playerName) => {
+export const createRoom = (object) => {
     return {
-        type: "CREATE_SINGLE_PLAY",
-        payload: playerName
+        type: "CREATE_ROOM",
+        payload: object
     }
 };
 
-export const createMultiPlay = () => {
+export const setInfo = (object) => {
     return {
-        type: "CREATE_MULTI_PLAY",
-        payload: null
-    }
-};
-
-export const setPlayerId = (playerId) => {
-    return {
-        type: "SET_PLAYER_ID",
-        payload: playerId
-    }
-};
-
-export const setRoomId = (roomId) => {
-    return {
-        type: "SET_ROOM_ID",
-        payload: roomId
-    }
-};
-
-export const setMultiPlay = (isMultiPlay) => {
-    return {
-        type: "SET_MULTI_PLAY",
-        payload: isMultiPlay
+        type: "SET_INFO",
+        payload: object
     }
 };

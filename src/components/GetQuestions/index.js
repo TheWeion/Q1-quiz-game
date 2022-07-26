@@ -36,7 +36,6 @@ const GetQuestions = () => {
           });
         questions.then((cur)=>{
             dispatch(setQuestions(cur));
-            console.log(infos);
             if (infos.multiPlay) {
                 socket.emit('updateQuestions', {"roomId": infos.roomId, "questions": cur});
             } else {
@@ -48,7 +47,6 @@ const GetQuestions = () => {
     useEffect(()=>{
         if (infos.multiPlay) {
             socket.on('updateQuestions', (res)=>{
-                console.log(res);
                 if (res.status === 'OK') {
                     navigate("../rules");
                 }
