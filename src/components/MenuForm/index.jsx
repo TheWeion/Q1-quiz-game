@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createSinglePlay, setPlayerId, setRoomId, setMultiPlay, updatePlayer } from "../../actions";
+import { createRoom, setInfo, updatePlayer } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import DOMPurify from 'dompurify';
 import { socket } from '../../socket/socket.js'; // eslint-disable-line no-unused-vars
@@ -9,7 +9,8 @@ import './styles.css';
 const MenuForm = () => {
   const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const players = useSelector(state => state.playersReducer); // eslint-disable-line no-unused-vars
+  const players = useSelector(state => state.playersReducer); // eslint-disable-line no-unused-vars
+  const infos = useSelector(state => state.infoReducer); // eslint-disable-line no-unused-vars
 
   const handleSinglePlay = () => {
     let html = ``;
@@ -30,10 +31,23 @@ const MenuForm = () => {
       joinSinglePlayButton.addEventListener('click', ()=>{
         const joinPlayerName = document.getElementById("playerName").value;
         if (joinPlayerName !== undefined && joinPlayerName !== null && joinPlayerName !== "") {
-          dispatch(createSinglePlay(joinPlayerName));
-          dispatch(setPlayerId(0));
-          dispatch(setRoomId(-1));
-          dispatch(setMultiPlay(false));
+          dispatch(createRoom({size: 1, name: joinPlayerName}));
+          dispatch(updatePlayer({
+              "id": 0,
+              "name": joinPlayerName,
+              "lap": 0, 
+              "timer": 0,
+              "penalty": 0,
+              "drs_used": false,
+              "pit_entered": false,
+              "finish": false,
+              "is_ready": false
+          }));
+          dispatch(setInfo({
+            playerId: 0,
+            roomId: -1,
+            multiPlay: false
+          }));
           navigate('/intro');
         } else {
           alert('Please enter player name');
@@ -55,7 +69,7 @@ const MenuForm = () => {
       <div className="row">
         <div className="col">
           <label id="roomLabel" for="roomNumber">Room</label>
-          <select id="roomNumber"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+          <select id="roomNumber"><option value="2">2 - (2 players)</option><option value="3">3 - (3 players)</option><option value="4">4 - (4 players)</option></select>
           <button id="joinMultiPlayButton" class="btn btn-primary">Join</button>
         </div>
         <div id="messageFromServer"></div>
@@ -74,6 +88,8 @@ const MenuForm = () => {
         const joinPlayerName = document.getElementById("playerName").value;
         if (joinPlayerName !== undefined && joinPlayerName !== null && joinPlayerName !== "") {
           const roomNumber = document.getElementById("roomNumber").value;
+          let roomSize = roomNumber;
+          dispatch(createRoom({size: roomSize}));
           console.log('click');
           attemptJoinRoom(roomNumber, joinPlayerName).then((yourPositionId)=>{
             document.getElementById("singlePlayButton").hidden = true;
@@ -83,23 +99,40 @@ const MenuForm = () => {
             document.getElementById("roomLabel").hidden = true;
             document.getElementById("roomNumber").hidden = true;
             document.getElementById("joinMultiPlayButton").hidden = true;
-            let player = players[yourPositionId];
-            player.name = joinPlayerName;
-            dispatch(updatePlayer(player));
-            dispatch(setPlayerId(yourPositionId));
-            dispatch(setRoomId(roomNumber));
-            dispatch(setMultiPlay(true));
+            dispatch(setInfo({
+              playerId: yourPositionId,
+              roomId: parseInt(roomNumber),
+              multiPlay: true
+            }));
             if (yourPositionId === 0) {
+              dispatch(updatePlayer({
+                  "id": yourPositionId,
+                  "name": joinPlayerName,
+                  "lap": 0, 
+                  "timer": 0,
+                  "penalty": 0,
+                  "drs_used": false,
+                  "pit_entered": false,
+                  "finish": false,
+                  "is_ready": false
+              }));
               document.getElementById("messageFromServer").innerHTML = `<h2>You are the host</h2>`;
-              wait(2).then(()=>{
-                navigate('/intro');
-              });
             } else {
+              dispatch(updatePlayer({
+                "id": yourPositionId,
+                "name": joinPlayerName,
+                "lap": 0, 
+                "timer": 0,
+                "penalty": 0,
+                "drs_used": false,
+                "pit_entered": false,
+                "finish": false,
+                "is_ready": false
+            }));
               document.getElementById("messageFromServer").innerHTML = `<h2>Wait for a bit</h2>`;
-              wait(2).then(()=>{
-                navigate('/waiting');
-              });
             }
+          }).catch((err)=>{
+            console.log(err);
           });
         } else {
           alert('Please enter player name');
@@ -108,12 +141,25 @@ const MenuForm = () => {
     }
   };
 
-  const attemptJoinRoom = (room, name) => {
+  useEffect(()=>{
+    if (infos.multiPlay) {
+      if (infos.playerId === 0) {
+        wait(2).then(()=>{
+          navigate('/intro');
+        });
+      } else {
+        wait(2).then(()=>{
+          navigate('/waiting');
+        });
+      }
+    }
+  }, [infos, players]);
+
+  const attemptJoinRoom = (roomId, name) => {
     return new Promise((resolve, reject) => {
-      socket.emit('joinRoom', {"roomId": room, "name": name});
+      socket.emit('joinRoom', {"roomId": roomId, "name": name});
       socket.on('yourId', (res)=>{
-        console.log(res);
-        resolve(res.yourId);
+        resolve(parseInt(res.yourId));
       });
     });
   };
