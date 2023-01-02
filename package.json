@@ -21,7 +21,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist-transform-encrypt": "^4.0.0",
-    "sass": "^1.57.0",
+    "sass": "^1.57.1",
     "socket.io-client": "^4.5.4",
     "web-vitals": "^2.1.4"
   },
